@@ -21,8 +21,10 @@
     {
       $CurrentUserName = $dbRow[2];
       $CurrentUserIDRole = $dbRow[5];
+      $CurrentUserID = $dbRow[0];
       $_SESSION['CurrentUserName'] = $CurrentUserName;
       $_SESSION['CurrentUserIDRole'] = $CurrentUserIDRole;
+      $_SESSION['CurrentUserID'] = $CurrentUserID;
       header('Location: index.php');
     }
   else
