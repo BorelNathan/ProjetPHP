@@ -18,7 +18,8 @@
       <option value="3">3</option>
       <option value="4">4</option>
     </select> </br>
-    Nouveau login pour l'utilisateur <input type="text" name="newloginUser"/><br/>
+    Nouveau login pour l'utilisateur <input type="text" name="newLoginUser"/><br/>
+    Nouveau mot de passe pour l'utilisateur <input type="text" name="newPasswordUser"/><br/>
     <?php echo $_SESSION['UserChange'] . '</br>'; ?>
     <input type="submit" name="action" value="Valider"/> <br/>
   </form>
