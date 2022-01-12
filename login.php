@@ -18,7 +18,7 @@
   Mot de passe  : <input type="password" name="motdepasse"/><br/>
   <?php echo $_SESSION['error'] ; ?>
   <input type="submit" name="action" value="Se connecter"/> <br/>
-  <?php echo '<a href=' . $redirectionMDP . '>Mot de passe oublié?</a> '; ?>
+  <?php echo '<a href=' . $redirectionMDP . '>Changé de mot de passe</a> '; ?>
 </form>
 
 

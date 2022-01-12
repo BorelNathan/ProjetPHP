@@ -23,7 +23,8 @@
           <body>
             <h1>Merci pour votre inscription</h1>
             <p>Voici votre login : ' . $login . '</p>
-            <p>et mot de passe temporaire : ' . $password . '</p>
+            <p>Mot de passe temporaire : ' . $password . '</p>
+            <p>Changé de mot de passe : https://e-eventio.alwaysdata.net/ChangePassword.php</p>
 
 
 
