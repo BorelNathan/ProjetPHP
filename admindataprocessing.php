@@ -258,7 +258,7 @@
               {
                 $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
                 mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-                $query2 = "UPDATE users SET role_id = '" . $newUserIDrole . "' , passwd = '" . $newpassword . "' where login = '" . $login . "'";
+                $query2 = "UPDATE users SET id_role = '" . $newUserIDrole . "' , passwd = '" . $newpassword . "' where login = '" . $login . "'";
                 mysqli_query($dbLink, $query2);
                 $_SESSION['UserChange'] = 'Action enregistrer';
                 header('Location: gestionUsers.php');
