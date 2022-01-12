@@ -20,6 +20,7 @@
     </select> </br>
     Nouveau login pour l'utilisateur <input type="text" name="newLoginUser"/><br/>
     Nouveau mot de passe pour l'utilisateur <input type="text" name="newPasswordUser"/><br/>
+    Nouveau mail pour l'utilisateur <input type="text" name="newMailUser"/><br/>
     <?php echo $_SESSION['UserChange'] . '</br>'; ?>
     <input type="submit" name="action" value="Valider"/> <br/>
   </form>
