@@ -3,7 +3,7 @@
   start_page('S\'inscrire');
   ficheCSS('style.css');
   $redirectionlogin = 'login.php';
-  $redirectionMDP = 'ChangePassword.php';
+
 ?>
 
 
@@ -18,7 +18,6 @@
 
         </form>
         <?php echo '<a href=' . $redirectionlogin . '>Se connecter?</a>  </br>'; ?>
-        <?php echo '<a href=' . $redirectionMDP . '>Mot de passe oublié?</a> '; ?>
 
         </div>
 

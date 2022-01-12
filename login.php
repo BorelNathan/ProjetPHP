@@ -3,6 +3,7 @@
   start_page('Login');
   ficheCSS('style.css');
   session_start();
+  $redirectionMDP = 'ChangePassword.php';
 ?>
 
 <div id=container><div class="formname">
@@ -17,6 +18,7 @@
   Mot de passe  : <input type="password" name="motdepasse"/><br/>
   <?php echo $_SESSION['error'] ; ?>
   <input type="submit" name="action" value="Se connecter"/> <br/>
+  <?php echo '<a href=' . $redirectionMDP . '>Mot de passe oublié?</a> '; ?>
 </form>
 
 
