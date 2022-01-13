@@ -25,7 +25,7 @@
       $_SESSION['UserIDPage'] = $CurrentUserID;
       $query2 = "UPDATE users SET login = '" . $NewLoginUserPage . "' where id_user = '" . $CurrentUserID . "'";
       mysqli_query($dbLink, $query2);
-      $_SESSION['userPage'] = 'Action enregistrer';
+      $_SESSION['userPage'] = 'Login modifié en : ' . $NewLoginUserPage;
       $_SESSION['CurrentUserName'] = $NewLoginUserPage;
       header('Location: userPage.php');
     }

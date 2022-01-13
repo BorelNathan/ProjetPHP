@@ -22,19 +22,22 @@
     if($UtilisateurCourantIDRole == 0){
       echo '
         <section class="connection" id="notConnected">
-          <p>Vous n\'etes pas connecte</p>
-          <a href="login.php">Se connecter</a>
-          <a href= "Inscription.php" />S\'inscrire</a>
+  				<p>Vous n\'êtes pas connecté</p>
+  				<ul>
+  					<li><a href="login.php">se connecter</a></li>
+  					<li><a href= "Inscription.php" />s\'inscrire</a></li>
+  				</ul>
         </section>
         </header>';
 }
     else{
-      echo 'Connecter en tant que ' . $UtilisateurCourantNom;
       echo '
         <section class="connection" id="connected">
-          <a href="userPage.php">Mon espace</a>
-          <a href="logout.php"><img id="logout" src="logout.svg" alt="Se déconnecter" /></a>
-        </section>
+        <p> Connecté en tant que ' . $UtilisateurCourantNom . '</p>
+  				<ul>
+  					<li><a href="userPage.php">Mon espace</a></li>
+  					<li><a href="logout.php" id="logoutli"><img id="logout" src="logout.svg" alt="se d�connecter" /></a></li>
+  				</ul>
       </header>';
 }
 
