@@ -24,12 +24,12 @@
         <section class="connection" id="notConnected">
   				<p>Vous n\'êtes pas connecté</p>
   				<ul>
-  					<li><a href="login.php">se connecter</a></li>
-  					<li><a href= "Inscription.php" />s\'inscrire</a></li>
+  					<li><a href="login.php">Se connecter</a></li>
+  					<li><a href= "Inscription.php" />S\'inscrire</a></li>
   				</ul>
         </section>
         </header>';
-}
+    }
     else{
       echo '
         <section class="connection" id="connected">
@@ -39,7 +39,7 @@
   					<li><a href="logout.php" id="logoutli"><img id="logout" src="logout.svg" alt="se d�connecter" /></a></li>
   				</ul>
       </header>';
-}
+    }
 
 
   #echo 'Niveau de droit du compte : ' . $UtilisateurCourantIDRole . '</br>';
