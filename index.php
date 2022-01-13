@@ -22,9 +22,9 @@
     if($UtilisateurCourantIDRole == 0){
       echo '
         <section class="connection" id="notConnected">
-          <p>Vous netes pas connecte</p>
-          <a href="login.php">se connecter</a>
-          <a href= "Inscription.php" />s\'inscrire</a>
+          <p>Vous n\'etes pas connecte</p>
+          <a href="login.php">Se connecter</a>
+          <a href= "Inscription.php" />S\'inscrire</a>
         </section>
         </header>';
 }
@@ -33,7 +33,7 @@
       echo '
         <section class="connection" id="connected">
           <a href="userPage.php">Mon espace</a>
-          <a href="logout.php"><img id="logout" src="logout.svg" alt="se d�connecter" /></a>
+          <a href="logout.php"><img id="logout" src="logout.svg" alt="Se déconnecter" /></a>
         </section>
       </header>';
 }
