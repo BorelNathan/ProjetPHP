@@ -3,6 +3,12 @@
     require 'utils.inc.php';
     $UtilisateurCourantNom = $_SESSION['CurrentUserName'];
     $UtilisateurCourantIDRole = $_SESSION['CurrentUserIDRole'];
+    $checkIDrole = recheckRoleID($UtilisateurCourantNom);
+
+    if($checkIDrole != $UtilisateurCourantIDRole){
+        $UtilisateurCourantIDRole = $checkIDrole;
+        $_SESSION['CurrentUserIDRole'] = $checkIDrole;
+    }
 
     echo $UtilisateurCourantNom;
     if ($UtilisateurCourantIDRole == 4) { ?>
@@ -11,7 +17,7 @@
             Date de début de la campagne : <input type="date" name="CampDateDeb"/> <br/>
             Date de fin de la campagne : <input type="date" name="CampDateFin"/><br/>
             Points attribués : <input type="number" name="CampPoints">
-            <?php echo $_SESSION['error'] ; ?>
+            <?php echo $_SESSION['MsgCampagne'] ; ?>
             <input type="submit" name="action" value="Créer une campagne"/> <br>
             <a href="">Consulter ma page de campagne</a><br/>
             <a href="index.php"> Revenir à la page principale </a><br/>
