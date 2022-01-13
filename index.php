@@ -11,6 +11,7 @@
 
   if($checkIDrole != $UtilisateurCourantIDRole){
     $UtilisateurCourantIDRole = $checkIDrole;
+    $_SESSION['CurrentUserIDRole'] = $checkIDrole;
   }
 
   echo 'Connectez en tant que : ' . $UtilisateurCourantNom . '</br>';
