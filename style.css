@@ -1,85 +1,49 @@
-html,body {
-    font-family: source-sans-pro, sans-serif;
-   background:#f2f2f2;
-   color:#333;
- font-size: 13px;
- line-height: 1;
- text-rendering: geometricPrecision;
- -moz-osx-font-smoothing: grayscale;
- -webkit-font-smoothing: antialiased;
-     padding:0px;
-   margin:0px;
-   height:100%;
-   display:flex;
-   align-items:center;
-   justify-content:center;
+@font-face {
+    font-family : "Extreme";
+    src : url("a.ttf");
+}
 
- }
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    }
 
- .formname {
-   text-align:center;
-   font-size: 1.5em;
-   font-weight:bold;
- -webkit-margin-before: 0.67em;
- -webkit-margin-after: 0.67em;
-   font-family:sans-serif;
-   color:#666;
-   border-bottom: 1px solid lightgray;
-   padding-bottom:20px;
- }
+header {
+	background-color : #ffffff;
+    box-shadow: 0px 0.5vh 3px 1px rgba(41,41,41,0.5);
+    min-height : 8vmin;
+    height : 10vh;
+    max-height : 14vmin;
+    width : 100%;
+    position : absolute;
+    z-index : 1000;
+    display : flex;
+    flex-direction : row;
+    align-items : center;
+    padding-left : 1vmin;
+    box-sizing : border-box;
+    justify-content : space-between;
+}
 
- *:focus {
-     outline: 0;
- }
+#logo {
+    height : clamp(6vmin, 8vh, 12vmin);
+    width : auto;
+    transform : rotate(-5deg);
+}
 
- form {
- display: block;
- margin-top: 0em;
+.connection {
+    display : flex;
+    flex-direction : row;
+    align-items : center;
+}
 
- }
-
-
-
- input, textarea {
-
-   font-weight: 300;
-   width: 100%;
-   margin: 8px 0;
-   text-indent: 1em;
-   padding: 10px 0;
-   border-radius: 3px;
-   border: 1px solid lightgray;
- }
-
-
-
-
- input[type="submit"] {
-   font-weight: bold;
-
-   background-color: #3e87ec;
-   color: white;
-   border: 0px solid #3079ed;
-   transition:all 0.5s;
- }
-
- input[type="submit"]:hover {
-   background-color: #2963b3;
-   color: white;
- }
-
- #container{
-   width:250px;
-   border: 1px solid lightgray;
-   padding:10px;
-     background-color:#fff;
-
-
- }
-
- a{
-   color: #427fed;
- cursor: pointer;
-   text-decoration:none;
-
- }
+.connection a {
+    padding-left : 0.5vmin;
+}
+.connection a img{
+    height : clamp(3vmin, 4vh, 6vmin);
+    width : auto;
+}

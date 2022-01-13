@@ -19,11 +19,13 @@
       $favicon = $emoji4;
     }
 ?>
+
   <!DOCTYPE html>
   <html lang="fr">
     <head>
-        <link rel="icon" type="image/png" <?php echo 'href="' . $favicon . '" /> '; ?>
-        <meta charset='utf-8'>
+        <link rel="icon" type="image/png" <?php echo 'href="' . $favicon . '"' ; ?> />
+        <link rel="stylesheet" href="style.css" />
+        <meta charset="utf-8"/>
         <title><?php echo $title; ?></title>
     </head>
     <body>
@@ -35,13 +37,6 @@
 <?php function end_page(){ ?>
     </body>
   </html>
-<?php } ?>
-
-
-<?php function ficheCSS($css){ ?>
-  <style>
-  <?php include $css; ?>
-  </style>
 <?php } ?>
 
 <?php function loginGenerator($string){
@@ -89,7 +84,7 @@
     mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
     $query = "SELECT * FROM users WHERE login =  '" . $login . "'";
     if(!($dbResult = mysqli_query($dbLink, $query)))
-       {
+      {
          echo 'Erreur de requête<br/>';
          echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
          echo 'Requête : ' . $query . '<br/>';

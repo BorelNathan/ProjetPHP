@@ -1,7 +1,6 @@
 <?php
   require 'utils.inc.php';
   start_page('S\'inscrire');
-  ficheCSS('style.css');
   $redirectionlogin = 'login.php';
 
 ?>
