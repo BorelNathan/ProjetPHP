@@ -4,8 +4,15 @@
   $UtilisateurCourantNom = $_SESSION['CurrentUserName'];
   $UtilisateurCourantIDRole = $_SESSION['CurrentUserIDRole'];
   start_page('Page principale');
+  $checkIDrole = recheckRoleID($UtilisateurCourantNom);
   $redirectionInscription = 'Inscription.php';
   $redirectionConnexion = 'login.php';
+
+
+  if($checkIDrole != $UtilisateurCourantIDRole){
+    $UtilisateurCourantIDRole = $checkIDrole;
+  }
+
   echo 'Connectez en tant que : ' . $UtilisateurCourantNom . '</br>';
   echo 'Niveau de droit du compte : ' . $UtilisateurCourantIDRole . '</br>';
 
