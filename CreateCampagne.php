@@ -13,10 +13,12 @@
     echo $UtilisateurCourantNom;
     if ($UtilisateurCourantIDRole == 4) { ?>
         <form action="AddCampagne.php" method="POST" name="ajoutercampagne">
-            Titre de la campagne : <input type="text" name="EventTitle"/><br/>
-            Date de début de la campagne : <input type="date" name="CampDateDeb"/> <br/>
-            Date de fin de la campagne : <input type="date" name="CampDateFin"/><br/>
-            Points attribués : <input type="number" name="CampPoints">
+            Titre de la campagne : <input type="text" name="CampTitle" required="required"/><br/>
+            Description de la campagne : <textarea type="text" name="CampDescription"></textarea><br/>
+            Date de début de la campagne : <input type="date" name="CampDateDeb" required="required"/> <br/>
+            Date de fin de la campagne : <input type="date" name="CampDateFin" required="required"/><br/>
+            Points attribués : <input type="number" name="CampPointsDonnés" required="required"><br/>
+            Points requis pour qu'un événement soit validé : <input type="number" name="CampPointsRequis" required="required"><br/>
             <?php echo $_SESSION['MsgCampagne'] ; ?>
             <input type="submit" name="action" value="Créer une campagne"/> <br>
             <a href="">Consulter ma page de campagne</a><br/>
