@@ -99,3 +99,28 @@
 }
 
 ?>
+
+<?php function IsThereACampain() {
+    $today = date('Y-m-d');
+    $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+    mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+    $query_currentcamp = "SELECT * FROM campagne WHERE date_deb <= '" . $today . "' AND date_fin >= '" . $today . "'";
+    if (!($dbCamp = mysqli_query($dbLink, $query_currentcamp)))
+    {
+        echo $_SESSION;
+        echo 'Erreur de requête<br/>';
+        echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
+        echo 'Requête : ' . $query_currentcamp . '<br/>';
+
+        exit();
+    }
+    elseif ($dbCampagne = mysqli_fetch_row($dbCamp)){
+        $CurrentCampain = $dbCampagne[0];
+        $_SESSION['CampagneActuelle'] = $CurrentCampain;
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+?>
