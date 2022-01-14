@@ -10,10 +10,10 @@ if($checkIDrole != $UtilisateurCourantIDRole){
     $_SESSION['CurrentUserIDRole'] = $checkIDrole;
 }
 
-echo $UtilisateurCourantNom;
-if ($UtilisateurCourantIDRole == 2 && $UtilisateurCourantIDRole == 4) { ?>
-        if (
-    <form action="AddCampagne.php" method="POST" name="ajoutercampagne">
+
+if ($UtilisateurCourantIDRole == 2 or $UtilisateurCourantIDRole == 4) { ?>
+
+    <form action="AddIdea.php" method="POST" name="ajoutercampagne">
         Description de l'idée : <textarea type="text" name="IdéeDescription"></textarea><br/>
         Points requis pour débloquer l'idée : <input type="number" name="IdéePointsRequis" required="required"><br/>
         <?php echo $_SESSION['MsgIdée'] ; ?>
