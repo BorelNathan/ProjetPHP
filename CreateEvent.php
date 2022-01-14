@@ -11,12 +11,11 @@
         $_SESSION['CurrentUserIDRole'] = $checkIDrole;
     }
 
-    echo $UtilisateurCourantNom;
-    echo $today;
+
     if ($UtilisateurCourantIDRole == 2 or $UtilisateurCourantIDRole == 4) { ?>
         <form action="AddEvent.php" method="POST" name="ajoutevent">
-            Titre de l'événement : <input type="text" name="EventTitle"/><br/>
-            Description de l'événement : <textarea type="text" name="EventDescription"></textarea><br/>
+            Titre de l'événement : <input type="text" name="EventTitle" required="required"/><br/>
+            Description de l'événement : <textarea type="text" name="EventDescription" required="required"></textarea><br/>
             <?php echo $_SESSION['MsgEvent'] ; ?>
             <input type="submit" name="action" value="Créer un événement"/> <br>
             <a href="">Consulter ma page d'événement</a><br/>
