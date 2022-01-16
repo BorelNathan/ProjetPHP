@@ -149,3 +149,29 @@
     }
 }
 ?>
+
+<?php function GetEvent() {
+        $user_id = $_SESSION['CurrentUserID'];
+        $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+        mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+        $query_checkid = "SELECT * FROM event WHERE id_user =  '" . $user_id . "'";
+        if (!($dbCamp = mysqli_query($dbLink, $query_checkid)))
+        {
+            echo $_SESSION;
+            echo 'Erreur de requête<br/>';
+            echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
+            echo 'Requête : ' . $query_checkid . '<br/>';
+
+            exit();
+        }
+        elseif ($dbEvent = mysqli_fetch_row($dbCamp)){
+            $CurrentEvent = $dbEvent;
+            $_SESSION['Event'] = $CurrentEvent;
+        }
+        else {
+
+        }
+
+}
+
+?>

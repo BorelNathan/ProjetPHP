@@ -75,6 +75,7 @@
           <input type="submit" name="Change" value="Changer de mot de passe"/> </form> <br/>';
           echo $InfoBack . '</br>';
      #echo 'gg t organisateur </br>';
+     echo '<a href=gestionEvent.php>Page de gestion de tes événements</a> </br>';
      echo '<a href=' . $redirectionConnexion . '>Se deconnecter</a> </br>';
      echo '<a href=' . $redirectionIndex . '>Retour a la page principale</a> </br>';
    }
