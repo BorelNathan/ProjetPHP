@@ -1,0 +1,28 @@
+<?php $title='Page d\'accueil '?>
+
+<?php ob_start(); ?>
+<header>
+  <img id="logo" src="logo.svg" alt="logo de E-Event.IO" />';
+
+<?php if($UtilisateurCourantIDRole == 0){ ?>
+        <section class="connection" id="notConnected">
+  				<p>Vous n\'êtes pas connecté</p>
+  				<ul>
+  					<li><a href="View/Login/ViewLogin.php">Se connecter</a></li>
+  					<li><a href= "View/Inscription/ViewSignIn.php" />S'inscrire</a></li>
+  				</ul>
+        </section>
+        </header>
+    <?php }
+    else{ ?>
+        <section class="connection" id="connected">
+        <p> Connecté en tant que '<?php echo $UtilisateurCourantNom; ?>'</p>
+  				<ul>
+  					<li><a href="userPage.php">Mon espace</a></li>
+  					<li><a href="/Utils/logout.php" id="logoutli"><img id="logout" src="logout.svg" alt="se d�connecter" /></a></li>
+  				</ul>
+  </header>
+<?php } ?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('/home/owo/www/View/template.php')?>
