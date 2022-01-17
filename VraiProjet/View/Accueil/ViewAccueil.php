@@ -12,7 +12,10 @@
                 <input type="hidden" name="action" value="login"/>
             </form>
             <li><a href='#' onclick='document.getElementById("login").submit()'>Se connecter</a></li>
-  					<li><a href= "View/Inscription/ViewSignIn.php" />S'inscrire</a></li>
+            <form id="SignIn" action="/" method="post">
+                <input type="hidden" name="action" value="SignIn"/>
+            </form>
+            <li><a href='#' onclick='document.getElementById("SignIn").submit()'>S'inscrire</a></li>
   				</ul>
         </section>
         </header>
@@ -21,14 +24,17 @@
         <section class="connection" id="connected">
         <p> Connecté en tant que '<?php echo $UtilisateurCourantNom; ?>'</p>
   				<ul>
-            <form id="test" action="/index.php" method="post">
+            <form id="MySpace" action="/" method="post">
                 <input type="hidden" name="action" value="UserPage"/>
             </form>
-  					<li><a href='#' onclick='document.getElementById("test").submit()'>Mon espace</a></li>
-  					<li><a href="/Utils/logout.php" id="logoutli"><img id="logout" src="logout.svg" alt="se d�connecter" /></a></li>
+  					<li><a href='#' onclick='document.getElementById("MySpace").submit()'>Mon espace</a></li>
+            <form id="Deco" action="/" method="post">
+                <input type="hidden" name="action" value="Deconnexion"/>
+            </form>
+            <li><a href='#' onclick='document.getElementById("Deco").submit()' id="logoutli"><img id="logout" src="logout.svg" alt="se d�connecter" /></a></li>
   				</ul>
   </header>
 <?php } ?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('/home/owo/www/View/template.php')?>
+<?php require('View/template.php')?>

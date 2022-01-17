@@ -24,9 +24,18 @@
 </form> <br/>
 <?php echo $InfoBack; ?> </br>
 <p>gg t admin </p></br>
-<a href=gestionUsers.php>Page de gestion</a> </br>
-<a href=' <?php echo $redirectionConnexion;?> '>Se deconnecter</a> </br>
-<a href=' <?php echo $redirectionIndex; ?> '>Retour a la page principale</a> </br>
+<form id="GestUser" action="/" method="post">
+    <input type="hidden" name="action" value="PageGestionUser"/>
+</form>
+<li><a href='#' onclick='document.getElementById("GestUser").submit()'>Page de gestion</a></li>
+<form id="logout" action="/" method="post">
+    <input type="hidden" name="action" value="Deconnexion"/>
+</form>
+<li><a href='#' onclick='document.getElementById("logout").submit()'>Se deconnecter</a></li>
+<form id="Retour" action="/" method="post">
+    <input type="hidden" name="action" value="Accueil"/>
+</form>
+<li><a href='#' onclick='document.getElementById("Retour").submit()'>Retour a la page principaler</a></li>
 
 <?php  }
   elseif($UtilisateurCourantIDRole == 3){ ?>
@@ -50,8 +59,14 @@
 </form> <br/>
 <?php echo $InfoBack; ?></br>
 <p>gg t juge </p></br>
-<a href=' <?php echo $redirectionConnexion;?> '>Se deconnecter</a> </br>
-<a href=' <?php echo $redirectionIndex; ?> '>Retour a la page principale</a> </br>
+<form id="logout" action="/" method="post">
+    <input type="hidden" name="action" value="Deconnexion"/>
+</form>
+<li><a href='#' onclick='document.getElementById("logout").submit()'>Se deconnecter</a></li>
+<form id="Retour" action="/" method="post">
+    <input type="hidden" name="action" value="Accueil"/>
+</form>
+<li><a href='#' onclick='document.getElementById("Retour").submit()'>Retour a la page principaler</a></li>
 
 <?php }
   elseif($UtilisateurCourantIDRole == 2){ ?>
@@ -75,9 +90,18 @@
 </form> <br/>
 <?php echo $InfoBack; ?></br>
 <p>gg t organisateur </p></br>';
-<a href=gestionEvent.php>Page de gestion de tes événements</a> </br>
-<a href=' <?php echo $redirectionConnexion;?> '>Se deconnecter</a> </br>
-<a href=' <?php echo $redirectionIndex; ?> '>Retour a la page principale</a> </br>
+<form id="GestUser" action="/" method="post">
+    <input type="hidden" name="action" value="PageGestionEvent"/>
+</form>
+<li><a href='#' onclick='document.getElementById("GestUser").submit()'>Page de gestion</a></li>
+<form id="logout" action="/" method="post">
+    <input type="hidden" name="action" value="Deconnexion"/>
+</form>
+<li><a href='#' onclick='document.getElementById("logout").submit()'>Se deconnecter</a></li>
+<form id="Retour" action="/" method="post">
+    <input type="hidden" name="action" value="Accueil"/>
+</form>
+<li><a href='#' onclick='document.getElementById("Retour").submit()'>Retour a la page principaler</a></li>
 
 <?php  }
   elseif($UtilisateurCourantIDRole == 1){?>
@@ -100,12 +124,18 @@
          <input type="submit" name="action" value="Changer de mot de passe"/>
 </form> <br/>
 <?php echo $InfoBack; ?></br>
-    <p>Nombre de points restant : ' . $NombreDePoint . ' </p></br>
-    <a href=' <?php echo $redirectionConnexion;?> '>Se deconnecter</a> </br>
-    <a href=' <?php echo $redirectionIndex; ?> '>Retour a la page principale</a> </br>
+    <p>Nombre de points restant : <?php echo $NombreDePoint; ?></p></br>
+    <form id="logout" action="/" method="post">
+        <input type="hidden" name="action" value="Deconnexion"/>
+    </form>
+    <li><a href='#' onclick='document.getElementById("logout").submit()'>Se deconnecter</a></li>
+    <form id="Retour" action="/" method="post">
+        <input type="hidden" name="action" value="Accueil"/>
+    </form>
+    <li><a href='#' onclick='document.getElementById("Retour").submit()'>Retour a la page principaler</a></li>
 
 <?php  } ?>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('/home/owo/www/View/template.php')?>
+<?php require('View/template.php')?>

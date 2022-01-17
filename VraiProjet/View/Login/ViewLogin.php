@@ -21,4 +21,4 @@
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('/home/owo/www/View/template.php')?>
+<?php require('View/template.php')?>

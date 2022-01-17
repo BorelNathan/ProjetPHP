@@ -20,11 +20,14 @@
   <?php echo $_SESSION['UserChange'] . '</br>'; ?>
   <input type="submit" name="action" value="ChangementUtilisateur"/> <br/>
 </form>
-<a href="index.php">Retour</a>
+<form id="Retour" action="/" method="post">
+    <input type="hidden" name="action" value=""/>
+</form>
+<li><a href='#' onclick='document.getElementById("Retour").submit()'>Retour</a></li>
 
 </div>
 
 <?php } ?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('/home/owo/www/View/template.php')?>
+<?php require('View/template.php')?>

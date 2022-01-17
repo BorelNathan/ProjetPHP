@@ -105,6 +105,19 @@ try{
     if($action == "login"){
       require('View/Login/ViewLogin.php');
     }
+    if($action == "Deconnexion"){
+      require("Utils/logout.php");
+    }
+    if($action == "SignIn"){
+      require("View/Inscription/ViewSignIn.php");
+    }
+    if($action == "Accueil"){
+      if($checkIDrole != $UtilisateurCourantIDRole){
+        $UtilisateurCourantIDRole = $checkIDrole;
+        $_SESSION['CurrentUserIDRole'] = $checkIDrole;
+      }
+      require('View/Accueil/ViewAccueil.php');
+    }
 
   }
   else{
