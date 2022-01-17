@@ -7,7 +7,7 @@
 
 </div>
 
-<form action="https://owo.alwaysdata.net/" method="POST" name="formulairedelogin">
+<form action="/" method="POST" name="formulairedelogin">
   Identifiant : <input type="text" name="login"/><br/>
   Mot de passe  : <input type="password" name="motdepasse"/><br/>
   <?php echo $_SESSION['error'] ; ?>
