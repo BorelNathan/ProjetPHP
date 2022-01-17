@@ -23,7 +23,7 @@
         <p> Connecté en tant que :<?php echo $UtilisateurCourantNom; ?></p>
 		<form id="MySpace" action="/" method="post">
                 <input type="hidden" name="action" value="UserPage"/>
-		</form>  					
+		</form>
         <form id="Deco" action="/" method="post">
             <input type="hidden" name="action" value="Deconnexion"/>
         </form>
@@ -48,7 +48,7 @@
 			<label for="sorting-select">
 				Trier par :
 			</label>
-			<select name="sorting-select" form="sorter">						
+			<select name="sorting-select" form="sorter">
 				<option value="new">nouveauté</option>
 				<option value="old">ancienneté</option>
 				<option value="mostLiked">popularité</option>
@@ -57,49 +57,52 @@
 			<button class="roundCornerLink" type="submit" form="sorter" value="">Rechercher</button>
 		</form>
 	</section>
-	<div class="eventContainer">
-		<section>
-			<a href="event.php?index=1">
-				<span>Soirée étudiante</span>
-				<img src="template1.jpg" alt="image" />
-			</a>
-		</section>
-		<section>
-			<a href="event.php?index=2">
-				<span>Tournoi Valorant</span>
-				<img src="template2.jpg" alt="image" />	
-			</a>
-		</section>
-		<section>
-			<a href="event.php?index=3">
-				<span>Chasse au trésor</span>
-				<img src="template3.jpg" alt="image" />	
-			</a>
-		</section>			
-		<section>
-			<a href="event.php?index=4">
-				<span>Atelier roulage de joints</span>
-				<img src="template4.jpg" alt="image" />	
-			</a>
-				</section>
-			</div>
-			<div class="eventContainer">
+	<?php
+  $query = "SELECT COUNT(*) FROM event";
+  $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+  mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+  $dbResult = mysqli_query($dbLink, $query);
+  $dbRow = mysqli_fetch_row($dbResult);
+  #echo $dbRow['0'] . '</br>';
+  $dbRow['0'] = $count;
+
+  $query2 = "SELECT * FROM event WHERE id_campagne = 27";
+  $dbResult2 = mysqli_query($dbLink, $query2);
+
+  $i = 0;
+  while($dbRow2 = mysqli_fetch_row($dbResult2)){
+    #echo $dbRow2['4'] . '</br>';
+    $CurrentEvent[$i] = $dbRow2;
+    $i++;
+
+  }
+
+
+
+
+
+
+   DisplayEvent($CurrentEvent, 0);
+   DisplayEvent($CurrentEvent, 5);
+   ?>
+
+	 <div class="eventContainer">
 				<section>
 					<a href="event.php?index=5">
 						<span>Cinéma en plein air</span>
-						<img src="template5.jpg" alt="image" />		
+						<img src="template5.jpg" alt="image" />
 					</a>
 				</section>
 				<section>
 					<a href="event.php?index=6">
 						<span>Apéro saucisson pinard comme de bons français</span>
-						<img src="template6.jpg" alt="image" />		
+						<img src="template6.jpg" alt="image" />
 					</a>
 				</section>
 				<section>
 					<a href="event.php?index=7">
 						<span>reconstitution historique du camp d'Auschwitz</span>
-						<img src="template7.jpg" alt="image" />	
+						<img src="template7.jpg" alt="image" />
 					</a>
 				</section>
 				<section>
@@ -119,19 +122,19 @@
 		<section>
 			<a href="event.php?index=2">
 				<span>Tournoi Valorant</span>
-				<img src="template2.jpg" alt="image" />	
+				<img src="template2.jpg" alt="image" />
 			</a>
 		</section>
 		<section>
 			<a href="event.php?index=3">
 				<span>Chasse au trésor</span>
-				<img src="template3.jpg" alt="image" />	
+				<img src="template3.jpg" alt="image" />
 			</a>
-		</section>			
+		</section>
 		<section>
 			<a href="event.php?index=4">
 				<span>Atelier roulage de joints</span>
-				<img src="template4.jpg" alt="image" />	
+				<img src="template4.jpg" alt="image" />
 			</a>
 				</section>
 			</div>

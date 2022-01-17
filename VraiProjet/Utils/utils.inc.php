@@ -148,4 +148,26 @@
         return false;
     }
 }
+
+function CreateEvent($titre){
+
+  echo  '<section>
+          <a href="event.php?index=1">
+            <span>' . $titre . '</span>
+            <img src="template1.jpg" alt="image" />
+          </a>
+        </section>';
+
+
+}
+
+function DisplayEvent($CurrentEvent, $IndiceEvent){
+
+    echo 	'<div class="eventContainer">';
+          for($i = 1 + $IndiceEvent; $i != 5 + $IndiceEvent; $i++){
+    CreateEvent($CurrentEvent[$i]['4']);
+          }
+    echo '</div>';
+
+}
 ?>
