@@ -57,7 +57,7 @@
 			<button class="roundCornerLink" type="submit" form="sorter" value="">Rechercher</button>
 		</form>
 	</section>
-	<div class="eventContainer" id="eventContainerUp">
+	<div class="eventContainer">
 		<section>
 			<a href="event.php?index=1">
 				<span>Soirée étudiante</span>
@@ -83,7 +83,7 @@
 			</a>
 				</section>
 			</div>
-			<div class="eventContainer" id="eventContainerDown">
+			<div class="eventContainer">
 				<section>
 					<a href="event.php?index=5">
 						<span>Cinéma en plein air</span>
@@ -107,6 +107,32 @@
 						<span>Initiation à la culture du cannabis</span>
 						<img src="template8.jpg" alt="image" />
 					</a>
+				</section>
+			</div>
+			<div class="eventContainer">
+		<section>
+			<a href="event.php?index=1">
+				<span>Soirée étudiante</span>
+				<img src="template1.jpg" alt="image" />
+			</a>
+		</section>
+		<section>
+			<a href="event.php?index=2">
+				<span>Tournoi Valorant</span>
+				<img src="template2.jpg" alt="image" />	
+			</a>
+		</section>
+		<section>
+			<a href="event.php?index=3">
+				<span>Chasse au trésor</span>
+				<img src="template3.jpg" alt="image" />	
+			</a>
+		</section>			
+		<section>
+			<a href="event.php?index=4">
+				<span>Atelier roulage de joints</span>
+				<img src="template4.jpg" alt="image" />	
+			</a>
 				</section>
 			</div>
 		</main>
