@@ -20,7 +20,13 @@
             Points attribués : <input type="number" name="CampPointsDonnés" required="required"><br/>
             Points requis pour qu'un événement soit validé : <input type="number" name="CampPointsRequis" required="required"><br/>
             <?php echo $_SESSION['MsgCampagne'] ; ?>
-            <input type="submit" name="action" value="Créer une campagne"/> <br>
+            <input type="submit" name="action" value="Créer une campagne"/> <br><br/>
+            Attention, les dates suivantes sont déjà prises par les campagnes suivantes : <br/>
+            <?php GetAllCampagnes();
+            for ($i = 0; $i < sizeof($_SESSION['AllCampagnes']); ++$i){
+                echo $_SESSION['AllCampagnes'][$i][7] . ' : ' . $_SESSION['AllCampagnes'][$i][1] . ' au ' . $_SESSION['AllCampagnes'][$i][2] . '<br/>';
+            }
+            ?><br/>
             <a href="">Consulter ma page de campagne</a><br/>
             <a href="index.php"> Revenir à la page principale </a><br/>
         </form>
