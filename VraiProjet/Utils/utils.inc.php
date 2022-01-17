@@ -149,25 +149,32 @@
     }
 }
 
-function CreateEvent($titre){
-
-  echo  '<section>
-          <a href="event.php?index=1">
-            <span>' . $titre . '</span>
-            <img src="template1.jpg" alt="image" />
-          </a>
-        </section>';
+function CreateEvent($CurrentEvent, $count){
 
 
-}
+  for($i = 0; $i <= floor($count/4); $i++){
 
-function DisplayEvent($CurrentEvent, $IndiceEvent){
 
     echo 	'<div class="eventContainer">';
-          for($i = 1 + $IndiceEvent; $i != 5 + $IndiceEvent; $i++){
-    CreateEvent($CurrentEvent[$i+$IndiceEvent]['4']);
+
+        for($j = 0; $j != 4; $j++){
+          if($i*4+$j < $count){
+            echo  '<section>
+                        <a href="event.php?index=1">
+                        <span>' . $CurrentEvent[$i*4+$j]['4'] . '</span>
+                        <img src="template1.jpg" alt="image" />
+                        </a>
+                   </section>';
+
           }
+          else{
+            break;
+          }
+        }
+
     echo '</div>';
 
+
+  }
 }
 ?>

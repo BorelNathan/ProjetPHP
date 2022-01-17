@@ -20,7 +20,7 @@
     <?php }
     else{ ?>
     <section class="connection" id="connected">
-        <p> Connecté en tant que :<?php echo $UtilisateurCourantNom; ?></p>
+        <p> Connecté en tant que : <?php echo $UtilisateurCourantNom; ?></p>
 		<form id="MySpace" action="/" method="post">
                 <input type="hidden" name="action" value="UserPage"/>
 		</form>
@@ -34,7 +34,7 @@
 	</section>
 <?php } ?>
 </header>
-<main>
+<main id="accueilMain">
 	<section id="campaignContainer" >
 		<h2>
 			Campagne en cours : Festival de février
@@ -58,13 +58,14 @@
 		</form>
 	</section>
 	<?php
+
   $query = "SELECT COUNT(*) FROM event";
   $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
   mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
   $dbResult = mysqli_query($dbLink, $query);
   $dbRow = mysqli_fetch_row($dbResult);
   #echo $dbRow['0'] . '</br>';
-  $dbRow['0'] = $count;
+  $count = $dbRow['0'];
 
   $query2 = "SELECT * FROM event WHERE id_campagne = 27";
   $dbResult2 = mysqli_query($dbLink, $query2);
@@ -77,21 +78,20 @@
 
   }
 
-   DisplayEvent($CurrentEvent, 0);
-   DisplayEvent($CurrentEvent, 2);
-   DisplayEvent($CurrentEvent, 4);
+  CreateEvent($CurrentEvent, $count);
+
    ?>
 
-		</main>
-		<footer>
-			<ul>
-				<li><a class="roundCornerLink" href="howitworks.php">Fonctionnement du site</a></li>
-				<li><div class="split"></div></li>
-				<li><a class="roundCornerLink" href="CGU.php">CGU</a></li>
-				<li><div class="split"></div></li>
-				<li><a class="roundCornerLink" href="legaldisclaimer.php">Mentions légales</a></li>
-			</ul>
-		</footer>
+ </main>
+ <footer>
+   <ul>
+     <li><a class="roundCornerLink" href="howitworks.php">Fonctionnement du site</a></li>
+     <li><div class="split"></div></li>
+     <li><a class="roundCornerLink" href="CGU.php">CGU</a></li>
+     <li><div class="split"></div></li>
+     <li><a class="roundCornerLink" href="legaldisclaimer.php">Mentions légales</a></li>
+   </ul>
+ </footer>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('View/template.php')?>
