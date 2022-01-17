@@ -162,7 +162,7 @@ function CreateEvent($CurrentEvent, $count){
             echo  '<section>
                         <a href="event.php?index=1">
                         <span>' . $CurrentEvent[$i*4+$j]['4'] . '</span>
-                        <img src="../../resources/images/thumbnail/0' . $i*4+$j . '.jpg" alt="image" />
+                        <img src="../../resources/images/thumbnail/' . $i*4+$j . '.jpg" alt="image" />
                         </a>
                    </section>';
 
