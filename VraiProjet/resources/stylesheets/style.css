@@ -31,6 +31,7 @@
 |_|_|_| |_|_|\_\___/      \__,_|_| |_|\__,_|      |_.__/ \__,_|\__|\__\___/|_| |_|___/
 */
 .roundCornerLink {
+    display: flex;
     padding : 0.5vmin;
     margin : 0.5vmin;
     border: 2px solid black;
@@ -38,11 +39,15 @@
     border-radius: 40px;
     text-decoration: none;
     color : black;
-    font-size: 2vmin;
+    font-size: 1em;
     transition: border-color 0.5s, color 0.5s;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
 }
 
-.roundCornerLink:hover {
+.roundCornerLink:hover, .roundCornerLink:focus {
     border-color : #224a95;
     color : #efc600;
     transition: all 0.5s;
@@ -172,7 +177,7 @@ Login / Signup / logout interface
                           | |         | |
                           |_|         |_|
 */
-main {
+#accueilMain {
     display : flex;
     flex-direction : column;
     box-shadow: 0px 0.5vh 3px 1px rgba(41,41,41,0.5);
@@ -478,6 +483,58 @@ Event display
     height: 100%;
     max-height: 100%;
     font-size : clamp(1vmin, 2vmin, 2vmin);
+}
+
+
+/*
+ _             _               _                                 _       
+| |           (_)             | |                               (_)      
+| | ___   __ _ _ _ __    _ __ | |__  _ __ ______ _ __ ___   __ _ _ _ __  
+| |/ _ \ / _` | | '_ \  | '_ \| '_ \| '_ \______| '_ ` _ \ / _` | | '_ \ 
+| | (_) | (_| | | | | |_| |_) | | | | |_) |     | | | | | | (_| | | | | |
+|_|\___/ \__, |_|_| |_(_) .__/|_| |_| .__/      |_| |_| |_|\__,_|_|_| |_|
+          __/ |         | |         | |                                  
+         |___/          |_|         |_|                                  
+*/
+
+#loginMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width : 100vw;
+    height: 80vh;
+}
+#loginMain div {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height : fit-content;
+    justify-content: space-evenly;
+    align-items: center;
+    border : 5px solid #224a95;
+    border-radius: 40px 0px 40px 0px;
+    box-sizing: border-box;
+    padding: 2vmin;
+}
+#loginMain h1 {
+    font-size: 2.5em;
+    height : 20%
+}
+#loginMain form:first-of-type {
+    display: flex;
+    height : 50%;
+    margin: 5%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    box-sizing: border-box;
+} 
+#loginMain form:first-of-type [type="submit"] {
+    align-self: center;
+    background : transparent;
+}
+#MDP {
+    display: none;
 }
 /*
   __            _
