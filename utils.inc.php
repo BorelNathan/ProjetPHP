@@ -325,3 +325,53 @@
     return true;
 }
 ?>
+
+<?php function getBonusIdeas($EventId) {
+    $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+    mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+    $query_idea = "SELECT * FROM idee_bonus WHERE id_event = '" . $EventId . "'";
+    if (!($dbCamp = mysqli_query($dbLink, $query_idea)))
+    {
+        echo $_SESSION;
+        echo 'Erreur de requête<br/>';
+        echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
+        echo 'Requête : ' . $query_idea . '<br/>';
+
+        exit();
+    }
+    else {
+        $i = 0;
+        while ($dbIdea = mysqli_fetch_row($dbCamp)) {
+            $CurrentEvent[$i] = $dbIdea;
+            $i++;
+        }
+
+        $_SESSION['AllIdeas'] = $CurrentEvent;
+    }
+}
+?>
+
+<?php function GetEventFromId($EventId) {
+    $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+    mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+    $query_event = "SELECT * FROM event WHERE id_event = '" . $EventId . "'";
+    if (!($dbEvent = mysqli_query($dbLink, $query_event)))
+    {
+        echo $_SESSION;
+        echo 'Erreur de requête<br/>';
+        echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
+        echo 'Requête : ' . $query_event . '<br/>';
+
+        exit();
+    }
+    elseif ($dbEvent = mysqli_fetch_row($dbEvent)){
+        $ChosenCampain = $dbEvent;
+        return $ChosenCampain;
+    }
+    else {
+
+    }
+
+}
+
+?>
