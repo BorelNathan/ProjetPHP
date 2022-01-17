@@ -1,6 +1,10 @@
 <?php $title='Page d\'accueil '?>
 
-<?php ob_start(); ?>
+<?php
+  ob_start();
+  $titre = GetCampagneName();
+?>
+
 <header>
   	<img id="logo" src="../../resources/images/logo.svg" alt="logo de E-Event.IO" />
 <?php if($UtilisateurCourantIDRole == 0){ ?>
@@ -37,7 +41,7 @@
 <main id="accueilMain">
 	<section id="campaignContainer" >
 		<h2>
-			Campagne en cours : Festival de février
+			Campagne en cours : <?php echo $titre; ?>
 		</h2>
 		<p>
 			Période de votes

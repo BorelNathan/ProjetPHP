@@ -179,8 +179,13 @@ function CreateEvent($CurrentEvent, $count){
 }
 
 function GetCampagneName(){
-  
-
+  $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+  mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+  $query = "SELECT * FROM campagne WHERE id_campagne =  27";
+  $dbResult = mysqli_query($dbLink, $query);
+  $dbRow = mysqli_fetch_row($dbResult);
+  $titre = $dbRow['7'];
+  return $titre;
 
 
 }
