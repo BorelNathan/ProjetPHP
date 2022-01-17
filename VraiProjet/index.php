@@ -111,6 +111,7 @@ try{
     }
     require('View/Accueil/ViewAccueil.php');
   }
+
 }
 catch(Exception $e){
   echo $e.getMessage();
