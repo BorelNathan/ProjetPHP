@@ -98,4 +98,4 @@
  </footer>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('View/template.php')?>
+<?php require('View/template.php');?>

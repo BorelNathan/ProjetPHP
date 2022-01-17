@@ -155,14 +155,13 @@ function CreateEvent($CurrentEvent, $count){
   for($i = 0; $i <= floor($count/4); $i++){
 
 
-    echo 	'<div class="eventContainer">';
+    echo     '<div class="eventContainer">';
 
         for($j = 0; $j != 4; $j++){
           if($i*4+$j < $count){
-            echo  '<section>
-                        <a href="event.php?index=1">
-                        <span>' . $CurrentEvent[$i*4+$j]['4'] . '</span>
-                        <img src="../../resources/images/thumbnail/' . $i*4+$j . '.jpg" alt="image" />
+            echo  '<section> <a href="event.php?index=1">
+                        <span>' , $CurrentEvent[$i*4+$j]['4'] , '</span>
+                        <img src="../../resources/images/thumbnail/' , $i*4+$j , '.jpg" alt="image" />
                         </a>
                    </section>';
 
