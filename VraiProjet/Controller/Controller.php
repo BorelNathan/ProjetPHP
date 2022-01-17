@@ -132,25 +132,26 @@ function ChangePassword2($login,$password,$newPassword){
       $_SESSION['userPage'] = 'Mauvais identifiant ou mot de passe';
   }
 
-  function ChangeLogin($newlogin,$password,$login){
-    $userManager = new UserManager();
-    $user = $userManager->selectUserByLoginPassword($login,$password);
-    $dbRow = $user->fetch();
-    if($dbRow[2] == $login && $dbRow[3] == $password){
-      $CurrentUserID = $dbRow[0];
-      $_SESSION['UserIDPage'] = $CurrentUserID;
-      $verif = $userManager->updateLogin($newlogin,$CurrentUserID);
-      if($verif === false){
-        throw new Exception('Erreur : Problème lors du changement de login');
-      }
-      else{
-        $_SESSION['userPage'] = 'Login modifié en : ' . $newlogin;
-        $_SESSION['CurrentUserName'] = $newlogin;
-      }
-    }
-    else{
-      $_SESSION['userPage'] = 'Mauvais identifiant ou mot de passe';
-    }
-  }
 }
+
+#  function ChangeLogin($newlogin,$password,$login){
+#    $userManager = new UserManager();
+#    $user = $userManager->selectUserByLoginPassword($login,$password);
+#    $dbRow = $user->fetch();
+#    if($dbRow[2] == $login && $dbRow[3] == $password){
+#      $CurrentUserID = $dbRow[0];
+#      $_SESSION['UserIDPage'] = $CurrentUserID;
+#      $verif = $userManager->updateLogin($newlogin,$CurrentUserID);
+#      if($verif === false){
+#        throw new Exception('Erreur : Problème lors du changement de login');
+#      }
+#      else{
+#        $_SESSION['userPage'] = 'Login modifié en : ' . $newlogin;
+#        $_SESSION['CurrentUserName'] = $newlogin;
+#      }
+#    }
+#    else{
+#      $_SESSION['userPage'] = 'Mauvais identifiant ou mot de passe';
+#    }
+#  }
 ?>
