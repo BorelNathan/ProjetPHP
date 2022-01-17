@@ -77,67 +77,11 @@
 
   }
 
-
-
-
-
-
    DisplayEvent($CurrentEvent, 0);
-   DisplayEvent($CurrentEvent, 5);
+   DisplayEvent($CurrentEvent, 2);
+   DisplayEvent($CurrentEvent, 4);
    ?>
 
-	 <div class="eventContainer">
-				<section>
-					<a href="event.php?index=5">
-						<span>Cinéma en plein air</span>
-						<img src="template5.jpg" alt="image" />
-					</a>
-				</section>
-				<section>
-					<a href="event.php?index=6">
-						<span>Apéro saucisson pinard comme de bons français</span>
-						<img src="template6.jpg" alt="image" />
-					</a>
-				</section>
-				<section>
-					<a href="event.php?index=7">
-						<span>reconstitution historique du camp d'Auschwitz</span>
-						<img src="template7.jpg" alt="image" />
-					</a>
-				</section>
-				<section>
-					<a href="event.php?index=8">
-						<span>Initiation à la culture du cannabis</span>
-						<img src="template8.jpg" alt="image" />
-					</a>
-				</section>
-			</div>
-			<div class="eventContainer">
-		<section>
-			<a href="event.php?index=1">
-				<span>Soirée étudiante</span>
-				<img src="template1.jpg" alt="image" />
-			</a>
-		</section>
-		<section>
-			<a href="event.php?index=2">
-				<span>Tournoi Valorant</span>
-				<img src="template2.jpg" alt="image" />
-			</a>
-		</section>
-		<section>
-			<a href="event.php?index=3">
-				<span>Chasse au trésor</span>
-				<img src="template3.jpg" alt="image" />
-			</a>
-		</section>
-		<section>
-			<a href="event.php?index=4">
-				<span>Atelier roulage de joints</span>
-				<img src="template4.jpg" alt="image" />
-			</a>
-				</section>
-			</div>
 		</main>
 		<footer>
 			<ul>

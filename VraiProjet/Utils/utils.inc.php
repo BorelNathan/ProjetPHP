@@ -165,7 +165,7 @@ function DisplayEvent($CurrentEvent, $IndiceEvent){
 
     echo 	'<div class="eventContainer">';
           for($i = 1 + $IndiceEvent; $i != 5 + $IndiceEvent; $i++){
-    CreateEvent($CurrentEvent[$i]['4']);
+    CreateEvent($CurrentEvent[$i+$IndiceEvent]['4']);
           }
     echo '</div>';
 
