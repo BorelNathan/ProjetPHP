@@ -37,7 +37,7 @@ if
         </form>';
         }
         ?>
-        <a href="gestionEvent.php">Retour à la page précédente</a><br/>
+        <a href="gestionIdeaChoice.php">Retour à la page précédente</a><br/>
         <a href="index.php">Retour à la page principale</a>
 
         </div>

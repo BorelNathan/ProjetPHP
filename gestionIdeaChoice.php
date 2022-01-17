@@ -3,7 +3,6 @@
 session_start();
 require 'utils.inc.php';
 $Event = $_SESSION['Event'];
-$AllIdeas = $_SESSION['AllIdeas'];
 $_SESSION['IdeaHasChanged'] = false;
 
 $filter = filterUsers(2);
@@ -17,6 +16,8 @@ if ($filter == 1) {
         <?php
         if ($check = IsThereAnEvent() != false) {
             GetEvent();
+            GetBonusIdeas($_SESSION['Event'][0]);
+            $AllIdeas = $_SESSION['AllIdeas'];
             ?>
             Nom de l'événement : <?php echo $Event[4] . '</br>'; ?>
             Description de l'événement : <?php echo $Event[5] . '</br>'; ?>
@@ -25,7 +26,6 @@ if ($filter == 1) {
                 Choisissez une idée bonus à modifier : <br/>
             <form action="ideachoiceprocessing.php" method="POST" name="traitementrequetesideeorganisateur">
                 <?php
-                    getBonusIdeas($_SESSION['Event'][0]);
                     for ($i = 0; $i < sizeof($AllIdeas); $i++){
                         echo '<input type="radio" id="' . $AllIdeas[$i][0] . '" name="ideaSelector" value="' . $AllIdeas[$i][0] . '" > 
                               <label for="' . $AllIdeas[$i][0] . '">' . $AllIdeas[$i][1] . ' points requis</label><br/>';
