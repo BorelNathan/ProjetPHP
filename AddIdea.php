@@ -2,9 +2,9 @@
     require 'utils.inc.php';
     start_page('test-pass');
     session_start();
-    $title = $_POST['EventTitle'];
     $description = $_POST['IdéeDescription'];
-    $point_min = $_POST['IdéeMinPoint'];
+    $description = addslashes($description);
+    $point_min = $_POST['IdéePointsRequis'];
     $user_id = $_SESSION['CurrentUserID'];
     $user_id_role = $_SESSION['CurrentUserIDRole'];
     date_default_timezone_set('UTC');
