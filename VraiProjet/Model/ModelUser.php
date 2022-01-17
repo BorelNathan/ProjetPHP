@@ -35,6 +35,27 @@ class UserManager
 
     return $point;
   }
+
+  public function updateLogin($login,$id){
+    $db = $this->dbConnect();
+    $verif = $db->query("UPDATE users SET login = '" . $login . "' WHERE id_user = '" . $id . "'");
+
+    return $verif;
+  }
+
+  public function updateEmail($email,$id){
+    $db = $this->dbConnect();
+    $verif = $db->query( "UPDATE users SET email = '" . $email . "' WHERE id_user = '" . $id . "'");
+
+    return $verif;
+  }
+
+  public function updatePassword2($password,$id){
+    $db = $this->dbConnect();
+    $verif = $db->query("UPDATE users SET passwd = '" . $password . "' where id_user = '" . $id . "'");
+
+    return $verif;
+  }
 }
 
 

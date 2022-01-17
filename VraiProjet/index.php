@@ -5,16 +5,31 @@ session_start();
 $UtilisateurCourantNom = $_SESSION['CurrentUserName'];
 $UtilisateurCourantIDRole = $_SESSION['CurrentUserIDRole'];
 $checkIDrole = recheckRoleID($UtilisateurCourantNom);
+
 $action = $_POST['action'];
 $email = $_POST['mail'];
+
 $loginnewpassword = $_POST['loginchangepassword'];
 $newpassword1 = $_POST['nouveaumotdepasse1'];
 $newpassword2 = $_POST['nouveaumotdepasse2'];
 $currentpassword = $_POST['currentpassword'];
 $errornewpassword = $_SESSION['errornewpassword'];
+
 $login = $_POST['login'];
 $password = $_POST['motdepasse'];
-$InfoBack = $_SESSION['userPage'];
+
+$oldLogin  = $_POST['loginUser'];
+$newUserIDrole = $_POST['newRoleID'];
+$newlogin = $_POST['newLoginUser'];
+$newpassword = $_POST['newPasswordUser'];
+$newmail = $_POST['newMailUser'];
+
+$NewMailUserPage = $_POST['NewMailUserPage'];
+$NewLoginUserPage = $_POST['NewLoginUserPage'];
+$NewPasswordUserPage = $_POST['NewPasswordUserPage'];
+$CurrentLoginUserPage = $_SESSION['CurrentUserName'];
+$CurrentPasswordUserPage = $_POST['CurrentPasswordUserPage'];
+
 try{
   if(isset($action)){
     if($action == "S'inscrire"){
@@ -49,60 +64,48 @@ try{
       require('View/Login/ViewLogin.php');
     }
     if($action == 'Changer de login'){
-      ChangeLogin();
+      if(!empty($NewLoginUserPage) && !empty($CurrentPasswordUserPage)){
+        ChangeLogin($NewLoginUserPage,$CurrentPasswordUserPage,$CurrentLoginUserPage);
+      }
+      else{
+        $_SESSION['userPage'] = 'Erreur : Il y a des champs non renseigné';
+      }
+      $InfoBack = $_SESSION['userPage'];
+      require('View/UserPage/ViewUserPage.php');
     }
     if($action == 'Changer de mail'){
-      $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
-      mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-      $query = "SELECT * FROM users WHERE login =  '" . $CurrentLoginUserPage . "' AND passwd =  '" . $CurrentPasswordUserPage . "'";
-      if(!($dbResult = mysqli_query($dbLink, $query)))
-         {
-           echo 'Erreur de requête<br/>';
-           echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
-           echo 'Requête : ' . $query . '<br/>';
-          exit();
-        }
-      elseif($dbRow = mysqli_fetch_row($dbResult))
-        {
-          $CurrentUserID = $dbRow[0];
-          $_SESSION['UserIDPage'] = $CurrentUserID;
-          $query2 = "UPDATE users SET email = '" . $NewMailUserPage . "' where id_user = '" . $CurrentUserID . "'";
-          mysqli_query($dbLink, $query2);
-          $_SESSION['userPage'] = 'Mail modifié en : ' . $NewMailUserPage;
-          header('Location: userPage.php');
-        }
-      else
-        {
-          $_SESSION['userPage'] = 'Mauvais identifiant ou mot de passe';
-          header('Location: userPage.php');
-        }
+      if(!empty($NewMailUserPage) && !empty($CurrentPasswordUserPage)){
+        ChangeEmail($CurrentLoginUserPage,$CurrentPasswordUserPage,$NewMailUserPage);
+      }
+      else{
+        $_SESSION['userPage'] = 'Erreur : Il y a des champs non renseigné';
+      }
+      $InfoBack = $_SESSION['userPage'];
+      require('View/UserPage/ViewUserPage.php');
     }
     if($action == 'Changer de mot de passe'){
-      $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
-      mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-      $query = "SELECT * FROM users WHERE login =  '" . $CurrentLoginUserPage . "' AND passwd =  '" . $CurrentPasswordUserPage . "'";
-      if(!($dbResult = mysqli_query($dbLink, $query)))
-         {
-           echo 'Erreur de requête<br/>';
-           echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
-           echo 'Requête : ' . $query . '<br/>';
-          exit();
-        }
-      elseif($dbRow = mysqli_fetch_row($dbResult))
-        {
-          $CurrentUserID = $dbRow[0];
-          $_SESSION['UserIDPage'] = $CurrentUserID;
-          $query2 = "UPDATE users SET passwd = '" . $NewPasswordUserPage . "' where id_user = '" . $CurrentUserID . "'";
-          mysqli_query($dbLink, $query2);
-          $_SESSION['userPage'] = 'MDP modifié en : ' . $NewPasswordUserPage;
-          header('Location: userPage.php');
-        }
-      else
-        {
-          $_SESSION['userPage'] = 'Mauvais identifiant ou mot de passe';
-          header('Location: userPage.php');
-        }
+      if(!empty($NewPasswordUserPage) && !empty($CurrentPasswordUserPage)){
+        ChangePassword2($CurrentLoginUserPage,$CurrentPasswordUserPage,$NewPasswordUserPage);
+      }
+      else{
+        $_SESSION['userPage'] = 'Erreur : Il y a des champs non renseigné';
+      }
+      $InfoBack = $_SESSION['userPage'];
+      require('View/UserPage/ViewUserPage.php');
     }
+#    if($action == "ChangementUtilisateur"){
+#      if(!empty($oldLogin) && !empty($newUserIDrole) && !empt
+#    }
+    if($action == "UserPage"){
+      require('View/UserPage/ViewUserPage.php');
+    }
+    if($action == "MDP"){
+      require('View/ChangePassword/ViewChangePassword.php');
+    }
+    if($action == "login"){
+      require('View/Login/ViewLogin.php');
+    }
+
   }
   else{
     if($checkIDrole != $UtilisateurCourantIDRole){
@@ -111,7 +114,6 @@ try{
     }
     require('View/Accueil/ViewAccueil.php');
   }
-
 }
 catch(Exception $e){
   echo $e.getMessage();

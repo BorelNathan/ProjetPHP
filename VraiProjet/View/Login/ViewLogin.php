@@ -1,6 +1,5 @@
 <?php $title='Login'?>
 <?php ob_start(); ?>
-<?php $redirectionMDP = '../ChangePassword.php'; ?>
 <div id=container><div class="formname">
 
   <h2> Se connecter </h2>
@@ -13,9 +12,11 @@
   Mot de passe  : <input type="password" name="motdepasse"/><br/>
   <?php echo $_SESSION['error'] ; ?>
   <input type="submit" name="action" value="Se connecter"/><br/>
-  <?php echo '<a href=' . $redirectionMDP . '>Changé de mot de passe</a> '; ?>
 </form>
-
+<form id="MDP" action="/" method="post">
+    <input type="hidden" name="action" value="MDP"/>
+</form>
+<a href='#' onclick='document.getElementById("MDP").submit()'>Changé de mot de passe</a>
 
 </div>
 <?php $content = ob_get_clean(); ?>
