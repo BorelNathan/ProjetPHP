@@ -10,6 +10,8 @@
     date_default_timezone_set('UTC');
     $today = date('Y-m-d');
 
+    $title = addslashes($title);
+    $description = addslashes($description);
 
     $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
     mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
@@ -31,6 +33,8 @@
                 echo 'Requête : ' . $query_insertevent . '<br/>';
                 exit();
             }
+
+
             $_SESSION['MsgEvent'] = 'Ton événement a été créé !';
             header('Location: CreateEvent.php');
             exit();
