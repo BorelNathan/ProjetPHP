@@ -5,7 +5,7 @@
 
 </div>
 
-<form action="admindataprocessing.php" method="POST" name="traitementrequetesadmin">
+<form action="/" method="POST" name="traitementrequetesadmin">
   Login de l'utilisateur : <input type="text" name="loginUser" required="required"/><br/>
   role_id a appliquer  : <select name="newRoleID"/><br/>
     <option value="">Pas de modification</option>
@@ -17,11 +17,11 @@
   Nouveau login pour l'utilisateur <input type="text" name="newLoginUser"/><br/>
   Nouveau mot de passe pour l'utilisateur <input type="text" name="newPasswordUser"/><br/>
   Nouveau mail pour l'utilisateur <input type="text" name="newMailUser"/><br/>
-  <?php echo $_SESSION['UserChange'] . '</br>'; ?>
+  <?php echo $_SESSION['UserChange'] ; ?> </br>
   <input type="submit" name="action" value="ChangementUtilisateur"/> <br/>
 </form>
 <form id="Retour" action="/" method="post">
-    <input type="hidden" name="action" value=""/>
+    <input type="hidden" name="action" value="Accueil"/>
 </form>
 <li><a href='#' onclick='document.getElementById("Retour").submit()'>Retour</a></li>
 
