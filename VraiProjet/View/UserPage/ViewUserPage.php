@@ -1,7 +1,7 @@
 <?php $title='Mon espace perso'?>
 <?php   $redirectionConnexion = 'Utils/logout.php';
   $redirectionIndex = 'index.php';?>
-<?php 
+<?php
     $role = "";
     switch ($UtilisateurCourantIDRole) {
         case 4:
@@ -16,7 +16,7 @@
         case 1:
             $role = "Donateur";
             break;
-    } 
+    }
 
     $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
           mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
@@ -62,7 +62,7 @@
             <form action="/index.php" method="POST" name="traitementrequetesuser">
                 <label for="NewLoginUserPage">Nouveau nom d'utilisateur: </label>
                 <input class="roundCornerLink" type="text" name="NewLoginUserPage">
-                <label for="CurrentPasswordUserPage">Mot de passe: </label> 
+                <label for="CurrentPasswordUserPage">Mot de passe: </label>
                 <input class="roundCornerLink" type="password" name="CurrentPasswordUserPage">
                 <input class="roundCornerLink" type="submit" name="action" value="Changer de nom d'utilisateur"/>
             </form>
@@ -72,9 +72,9 @@
                 Changer d'adresse mail
             </p>
             <form action="/index.php" method="POST" name="traitementrequetesuser">
-                <label for="NewMailUserPage">Nouvelle adresse mail: </label> 
+                <label for="NewMailUserPage">Nouvelle adresse mail: </label>
                 <input class="roundCornerLink" type="text" name="NewMailUserPage">
-                <label for="CurrentPasswordUserPage">Mot de passe: </label> 
+                <label for="CurrentPasswordUserPage">Mot de passe: </label>
                 <input class="roundCornerLink" type="password" name="CurrentPasswordUserPage">
                 <input class="roundCornerLink" type="submit" name="action" value="Changer d'adresse mail"/>
             </form>
@@ -96,13 +96,18 @@
 
 <?php echo $InfoBack; ?> </br>
 <?php
-    if ($UtilisateurCourantIDRole == 2 or $UtilisateurCourantIDRole == 4) {?>
+    if ($UtilisateurCourantIDRole == 4) {?>
         <form id="GestUser" action="/" method="post">
             <input type="hidden" name="action" value="PageGestionUser"/>
         </form>
         <a class="roundCornerLink" href='#' onclick='document.getElementById("GestUser").submit()'>Page de gestion</a>
-    <?php } ?> 
-
+    <?php }
+    elseif ($UtilisateurCourantIDRole == 2) { ?>
+      <form id="GestEvent" action="/" method="post">
+          <input type="hidden" name="action" value="PageGestionEvent"/>
+      </form>
+      <a class="roundCornerLink" href='#' onclick='document.getElementById("GestEvent").submit()'>Page de gestion</a>
+    <?php } ?>
 <form id="Retour" action="/" method="post">
     <input type="hidden" name="action" value="Accueil"/>
 </form>
