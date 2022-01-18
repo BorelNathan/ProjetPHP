@@ -51,7 +51,7 @@
                     </div>
                     <p>Votez pour ce projet et contribuez à sa concrétisation !</p>
                     <?php
-                          require_once 'utils.inc.php';
+                          require_once(__DIR__.'/../../Utils/utils.inc.php');
                           $filtre = filterUsers('1');
                           if($filtre == 1){
 
@@ -103,6 +103,6 @@
 		</footer>
 
 <?php $content = ob_get_clean();
-      require 'template.php';
-      #require('View/template.php');
+      #require 'template.php';
+      require(__DIR__.'/../template.php');
 ?>
