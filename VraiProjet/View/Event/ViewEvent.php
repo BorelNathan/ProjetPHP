@@ -114,8 +114,7 @@
                     </ul>
                 </section>
             </div>
-          <a href="../../index.php">Retour a la page principale</a> 
-
+        <a class="roundCornerLink" href="../../index.php">Retour a la page principale</a>
 		</main>
 		<footer>
 			<ul>
