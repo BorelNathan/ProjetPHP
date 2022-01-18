@@ -63,24 +63,9 @@
 	</section>
 	<?php
 
-  $query = "SELECT COUNT(*) FROM event";
-  $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
-  mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-  $dbResult = mysqli_query($dbLink, $query);
-  $dbRow = mysqli_fetch_row($dbResult);
-  #echo $dbRow['0'] . '</br>';
-  $count = $dbRow['0'];
 
-  $query2 = "SELECT * FROM event WHERE id_campagne = 27";
-  $dbResult2 = mysqli_query($dbLink, $query2);
-
-  $i = 0;
-  while($dbRow2 = mysqli_fetch_row($dbResult2)){
-    #echo $dbRow2['4'] . '</br>';
-    $CurrentEvent[$i] = $dbRow2;
-    $i++;
-
-  }
+  $count = GetEventCount();
+  $CurrentEvent = GetEventNames();
 
   CreateEvent($CurrentEvent, $count);
 
