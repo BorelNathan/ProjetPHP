@@ -12,6 +12,7 @@
       $UtilisateurCourantNom = $_SESSION['CurrentUserName'];
       $indiceimage = $dbRow['7'];
       $retour = $_SESSION['RetourEvent'];
+      $_SESSION['CurrentEventSee'] = $titre;
 
       ob_start();
 
@@ -80,7 +81,7 @@
                                          <label for="pointsToGive">Je donne</label>
                                          <input type="number" max="points restants user" min=1 name="pointsToGive"/>
                                          <label for="pointsToGive">points</label>
-                                         <button class="roundCornerLink" type="submit" form="voteInterface" value="">Voter</button>
+                                         <input class="roundCornerLink" type="submit" name="action" value="Valider"/> <br/>
                          </form>
                     <?php
                       }
@@ -113,6 +114,7 @@
                     </ul>
                 </section>
             </div>
+          <!--  <a href="../Accueil/ViewAccueil.php">Retour a la page principale</a>  --> 
 
 		</main>
 		<footer>

@@ -369,12 +369,35 @@ function GetEventNames(){
   return $CurrentEvent;
 }
 
-function Donation($NombreDePoint){
-  $query = "UPDATE event SET point =  point + '" . $NombreDePoint . "'";
+function Donation($NombreDePoint, $titre){
+
+  $query = "UPDATE event SET point =  point + '" . $NombreDePoint . "' WHERE titre = '" . $titre . "'";
   $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
   mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
   mysqli_query($dbLink, $query);
 
+
+}
+
+function GetUserPoints($login){
+  $query = "SELECT * FROM users WHERE login = '" . $login . "'";
+  $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+  mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+  $dbResult = mysqli_query($dbLink, $query);
+  $dbRow = mysqli_fetch_row($dbResult);
+
+  return $dbRow['4'];
+}
+
+function UpdateUserPoints($pointsToGive, $login){
+
+  $Currentpoints = GetUserPoints($login);
+  $PointaRetirer = $Currentpoints - $pointsToGive;
+
+  $query = "UPDATE users SET point = '" . $PointaRetirer . "' WHERE login = '" . $login . "'";
+  $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+  mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+  mysqli_query($dbLink, $query);
 
 }
 
