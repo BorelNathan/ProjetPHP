@@ -264,7 +264,7 @@
     $query_insertcamp = "INSERT INTO campagne (date_deb, date_fin, point_attribué, point_min, description, titre) VALUES 
                         ('" . $date_deb . "' , '" .  $date_fin . "' , " .  $points_attribués . "," . $points_requis . ",'" . $description . "','" . $title . "')";
 
-    $can_create = CheckCampagne($date_deb, $date_fin);
+    $can_create = CheckCampagne($date_deb, $date_fin, -1);
 
     if ($can_create) {
         if(!($dbResult = mysqli_query($dbLink, $query_insertcamp)))
@@ -283,7 +283,7 @@
 }
 ?>
 
-<?php function CheckCampagne($date_deb, $date_fin){
+<?php function CheckCampagne($date_deb, $date_fin, $id){
     $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
     mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
     $query_checkid = "SELECT * FROM campagne";
@@ -296,29 +296,17 @@
         echo 'Requête : ' . $query_checkid . '<br/>';
         exit();
     }
+
     else
     {
-        while ($dbRow = mysqli_fetch_row($dbResult))
-        {
-            if ($dbRow[1] <= $date_deb && $dbRow[2] >= $date_deb) {
-                return false;
-                exit();
-            }
-            elseif ($dbRow[1] <= $date_fin && $dbRow[2] >= $date_fin){
-                return false;
-                exit();
-            }
-            elseif ($dbRow[1] >= $date_deb && $dbRow[1] <= $date_fin){
-                return false;
-                exit();
-            }
-            elseif ($dbRow[2] >= $date_deb && $dbRow[2] <= $date_fin){
-                return false;
-                exit();
-            }
-            elseif ($dbRow[1] == $date_deb && $dbRow[2] == $date_fin){
-                return false;
-                exit();
+        while ($dbRow = mysqli_fetch_row($dbResult)) {
+            if ($dbRow[0] != $id){
+                if (($dbRow[2] < $date_deb && $dbRow[2] < $date_fin)||($dbRow[1] > $date_deb && $dbRow[1] > $date_fin)) {
+
+                }
+                else{
+                    return false;
+                }
             }
         }
     }
@@ -326,7 +314,7 @@
 }
 ?>
 
-<?php function getBonusIdeas($EventId) {
+<?php function GetBonusIdeas($EventId) {
     $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
     mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
     $query_idea = "SELECT * FROM idee_bonus WHERE id_event = '" . $EventId . "'";
@@ -367,6 +355,7 @@
     elseif ($dbEvent = mysqli_fetch_row($dbEvent)){
         $ChosenCampain = $dbEvent;
         return $ChosenCampain;
+
     }
     else {
 
@@ -374,4 +363,79 @@
 
 }
 
+?>
+
+<?php function GetIdeeFromId($IdeeId) {
+    $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+    mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+    $query_idee = "SELECT * FROM idee_bonus WHERE id_idee = '" . $IdeeId . "'";
+    if (!($dbEvent = mysqli_query($dbLink, $query_idee)))
+    {
+        echo $_SESSION;
+        echo 'Erreur de requête<br/>';
+        echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
+        echo 'Requête : ' . $query_idee . '<br/>';
+
+        exit();
+    }
+    elseif ($dbIdee = mysqli_fetch_row($dbEvent)){
+        $ChosenIdee = $dbIdee;
+        $_SESSION['IdeeChosen'] = $ChosenIdee;
+    }
+    else {
+
+    }
+
+}
+
+?>
+
+<?php function GetEndedCampagnes(){
+    $today = date('Y-m-d');
+    $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+    mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+    $query = "SELECT * FROM campagne WHERE date_fin < '" . $today . "'";
+    if (!($dbCamp = mysqli_query($dbLink, $query)))
+    {
+        echo $_SESSION;
+        echo 'Erreur de requête<br/>';
+        echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
+        echo 'Requête : ' . $query . '<br/>';
+
+        exit();
+    }
+    else {
+        $i = 0;
+        while ($dbEnd = mysqli_fetch_row($dbCamp)) {
+            $CurrentEvent[$i] = $dbEnd;
+            $i++;
+        }
+
+        $_SESSION['EndedCampagnes'] = $CurrentEvent;
+    }
+}
+?>
+
+<?php function GetEventsFromCampagneId($id){
+    $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+    mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
+    $query = "SELECT * FROM event WHERE id_campagne = '" . $id . "'";
+    if (!($dbCamp = mysqli_query($dbLink, $query)))
+    {
+        echo $_SESSION;
+        echo 'Erreur de requête<br/>';
+        echo 'Erreur : ' . mysqli_error($dbLink) . '<br/>';
+        echo 'Requête : ' . $query . '<br/>';
+
+        exit();
+    }
+    else{
+        $i = 0;
+        while ($dbEnd = mysqli_fetch_row($dbCamp)) {
+            $EndedCamp[$i] = $dbEnd;
+            $i++;
+        }
+        $_SESSION['EventsFromCampagne'] = $EndedCamp;
+    }
+}
 ?>
