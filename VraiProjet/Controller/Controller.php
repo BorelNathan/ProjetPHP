@@ -65,7 +65,7 @@ function Connexion($login,$password){
     $_SESSION['CurrentUserIDRole'] = $CurrentUserIDRole;
     $_SESSION['CurrentUserID'] = $CurrentUserID;
     $action = null;
-    header('Location: https://owo.alwaysdata.net/');
+    header('Location: index.php');
   }
   else{
   var_dump($user);
