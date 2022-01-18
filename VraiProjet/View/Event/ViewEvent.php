@@ -114,7 +114,7 @@
                     </ul>
                 </section>
             </div>
-          <!--  <a href="../Accueil/ViewAccueil.php">Retour a la page principale</a>  --> 
+          <a href="../../index.php">Retour a la page principale</a> 
 
 		</main>
 		<footer>
