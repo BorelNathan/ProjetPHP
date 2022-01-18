@@ -63,7 +63,7 @@ try{
       }
       require('View/Login/ViewLogin.php');
     }
-    if($action == 'Changer de login'){
+    if($action == 'Changer de nom d\'utilisateur'){
       if(!empty($NewLoginUserPage) && !empty($CurrentPasswordUserPage)){
         ChangeLogin($NewLoginUserPage,$CurrentPasswordUserPage,$CurrentLoginUserPage);
       }
@@ -73,7 +73,7 @@ try{
       $InfoBack = $_SESSION['userPage'];
       require('View/UserPage/ViewUserPage.php');
     }
-    if($action == 'Changer de mail'){
+    if($action == 'Changer d\'adresse mail'){
       if(!empty($NewMailUserPage) && !empty($CurrentPasswordUserPage)){
         ChangeEmail($CurrentLoginUserPage,$CurrentPasswordUserPage,$NewMailUserPage);
       }
