@@ -10,8 +10,10 @@
       require_once(__DIR__.'/../../Utils/utils.inc.php');
       $UtilisateurCourantIDRole = $_SESSION['CurrentUserIDRole'];
       $UtilisateurCourantNom = $_SESSION['CurrentUserName'];
+      $indiceimage = $dbRow['7'];
 
       ob_start();
+
 ?>
 
 	<header>
@@ -51,7 +53,7 @@
 
 		  <main>
             <section id="eventImageAndVotes">
-                <img src="../../resources/images/thumbnail/ <?php ?> .jpg" alt="image">
+                <?php echo '<img src="../../resources/images/thumbnail/' . $indiceimage . '.jpg" alt="image">'; ?>
                 <div>
                     <h1>
                     <?php
