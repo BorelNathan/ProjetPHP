@@ -71,7 +71,7 @@
     return 1;
   }
   else{
-    echo 'acces denied';
+    #echo 'acces denied';
     return 0;
   }
 
