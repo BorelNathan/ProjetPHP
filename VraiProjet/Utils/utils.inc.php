@@ -310,11 +310,13 @@ function CreateEvent($CurrentEvent, $count){
 
         for($j = 0; $j != 4; $j++){
           if($i*4+$j < $count){
-            echo  '<section> <a href="event.php?index=1">
+            $titre = $CurrentEvent[$i*4+$j]['4'];
+            echo  '<section> <a href="../View/Event/ViewEvent.php?Event=' . $titre . '">
                         <span>' , $CurrentEvent[$i*4+$j]['4'] , '</span>
                         <img src="../../resources/images/thumbnail/' , $i*4+$j , '.jpg" alt="image" />
                         </a>
                    </section>';
+
 
           }
           else{
