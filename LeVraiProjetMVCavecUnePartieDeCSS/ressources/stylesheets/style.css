@@ -1,0 +1,677 @@
+@font-face {
+    font-family: Extreme;
+    src: url("../fonts/cringe.ttf");
+}
+/*
+     _       __            _ _                   _   _   _
+    | |     / _|          | | |                 | | | | (_)
+  __| | ___| |_ __ _ _   _| | |_ ______ ___  ___| |_| |_ _ _ __   __ _ ___
+ / _` |/ _ \  _/ _` | | | | | __|______/ __|/ _ \ __| __| | '_ \ / _` / __|
+| (_| |  __/ || (_| | |_| | | |_       \__ \  __/ |_| |_| | | | | (_| \__ \
+ \__,_|\___|_| \__,_|\__,_|_|\__|      |___/\___|\__|\__|_|_| |_|\__, |___/
+                                                                  __/ |
+                                                                 |___/
+*/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font-family : Helvetica;
+    }
+
+[type="submit"] {
+    background: transparent;
+}
+/*
+ _ _       _                              _        _           _   _
+| (_)     | |                            | |      | |         | | | |
+| |_ _ __ | | _____ ______ __ _ _ __   __| |______| |__  _   _| |_| |_ ___  _ __  ___
+| | | '_ \| |/ / __|______/ _` | '_ \ / _` |______| '_ \| | | | __| __/ _ \| '_ \/ __|
+| | | | | |   <\__ \     | (_| | | | | (_| |      | |_) | |_| | |_| || (_) | | | \__ \
+|_|_|_| |_|_|\_\___/      \__,_|_| |_|\__,_|      |_.__/ \__,_|\__|\__\___/|_| |_|___/
+*/
+.roundCornerLink {
+    display: flex;
+    padding : 0.5vmin;
+    margin : 0.5vmin;
+    border: 2px solid black;
+    border-color : black;
+    border-radius: 40px;
+    text-decoration: none;
+    color : black;
+    font-size: 1em;
+    transition: border-color 0.5s, color 0.5s;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+}
+
+.roundCornerLink:hover, .roundCornerLink:focus {
+    border-color : #224a95;
+    color : #efc600;
+    transition: all 0.5s;
+}
+
+
+/*
+ _               _
+| |             | |
+| |__   ___   __| |_   _
+| '_ \ / _ \ / _` | | | |
+| |_) | (_) | (_| | |_| |
+|_.__/ \___/ \__,_|\__, |
+                    __/ |
+                   |___/
+
+*/
+body {
+    height: 100vh;
+    width : 100vw;
+}
+
+
+/*
+ _                    _
+| |                  | |
+| |__   ___  __ _  __| | ___ _ __
+| '_ \ / _ \/ _` |/ _` |/ _ \ '__|
+| | | |  __/ (_| | (_| |  __/ |
+|_| |_|\___|\__,_|\__,_|\___|_|
+*/
+header {
+	background-color : #ffffff;
+    box-shadow: 0px 0.5vh 3px 1px rgba(41,41,41,0.5);
+    min-height : 8vmin;
+    height : 10vh;
+    max-height : 14vmin;
+    width : 100%;
+    z-index : 1000;
+    display : flex;
+    flex-direction : row;
+    align-items : center;
+    padding-left : 1vmin;
+    box-sizing : border-box;
+    justify-content : space-between;
+}
+
+/*
+header logo
+*/
+#logo {
+    height : clamp(6vmin, 8vh, 12vmin);
+    width : auto;
+    transform : rotate(-5deg);
+}
+
+/*
+Login / Signup / logout interface
+*/
+.connection {
+    height : clamp(6vmin, 8vh, 12vmin);
+    width : 20%;
+    padding-right : 1vmin;
+    padding-left : 1vmin;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
+    border-left: 4px dotted rgba(147, 147, 147, 0.5);
+
+}
+.connection p {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.connection ul {
+    width : 100%;
+    height: 100%;
+    display : flex;
+    flex-direction : row;
+    align-items : center;
+    justify-content : space-between;
+
+}
+
+.connection ul li {
+    list-style-type : none;
+    width : 50%;
+}
+.connection ul li a{
+    display : flex;
+    text-align : center;
+    justify-content : center;
+}
+.connection ul li a, .connection p {
+    padding-left : 0.5vmin;
+    font-size : 2vmin;
+    color : black;
+    text-decoration : none;
+}
+
+#connected ul li a img {
+    display : flex;
+    height : clamp(3vmin, 4vh, 6vmin);
+    width : auto;
+    transform : scale(1);
+    transition : transform 0.5s;
+}
+#connected ul li a img:hover {
+    transform : scale(1.1);
+    transition : transform 0.5s;
+}
+#logoutli {
+    border : none !important;
+}
+
+
+/*
+ _           _                   _                                 _
+(_)         | |                 | |                               (_)
+ _ _ __   __| | _____  __  _ __ | |__  _ __ ______ _ __ ___   __ _ _ _ __
+| | '_ \ / _` |/ _ \ \/ / | '_ \| '_ \| '_ \______| '_ ` _ \ / _` | | '_ \
+| | | | | (_| |  __/>  < _| |_) | | | | |_) |     | | | | | | (_| | | | | |
+|_|_| |_|\__,_|\___/_/\_(_) .__/|_| |_| .__/      |_| |_| |_|\__,_|_|_| |_|
+                          | |         | |
+                          |_|         |_|
+*/
+#accueilMain {
+    display : flex;
+    flex-direction : column;
+    box-shadow: 0px 0.5vh 3px 1px rgba(41,41,41,0.5);
+    height: 80vh;
+    width : 100vw;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+/*
+Campaign state
+*/
+#campaignContainer {
+    display: flex;
+    height: 15%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#campaignContainer p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vmin;
+}
+#campaignContainer h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: Helvetica;
+    font-size: 4vmin;
+    padding-top: 2vh;
+}
+
+/*
+Event sorting interface
+*/
+#sortMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+}
+#sortForm {
+    padding-right: 2vw;
+    height : 100%;
+    font-size: 2vmin;
+}
+#sortForm button {
+    z-index : 90;
+    background: transparent;
+}
+
+/*
+Event display
+*/
+.eventContainer {
+    display : flex;
+    flex-direction : row;
+    align-items : center;
+    justify-content : space-around;
+}
+.eventContainer section {
+    padding : 2vmin;
+    height : 35vh;
+    width : 25%;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
+    box-sizing: border-box;
+
+}
+.eventContainer a {
+    position : relative;
+    background-size : cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vmin;
+    color : black;
+    width : 100%;
+    height : 100%;
+    text-decoration : none;
+
+}
+.eventContainer section a img {
+    position : absolute;
+    border: 5px solid black;
+    border-radius: 40px 0px 40px 0px;
+    position: relative;
+    width : 100%;
+    height : 100%;
+    object-fit: cover;
+    clip-path:fill-box;
+    box-shadow: 0px 0.5vh 3px 1px rgba(41,41,41,0.5);
+    border-color : black;
+    transition: border-color 0.5s;
+    box-sizing : border-box;
+}
+.eventContainer section a:hover img {
+    border-color : #224a95;
+    transition: border-color 0.5s;
+
+}
+.eventContainer section a span {
+    transform : rotate(-5deg);
+    font-family: Extreme;
+    font-size : 3vmin;
+    position : absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index : 90;
+    width : 90%;
+    height: auto;
+    text-shadow:    0.25vmin 0.25vmin 0px white,
+                    0.25vmin -0.25vmin 0px white,
+                    -0.25vmin -0.25vmin 0px white,
+                    -0.25vmin 0.25vmin 0px white,
+                    0.25vmin 0px 0px white,
+                    -0.25vmin 0px 0px white,
+                    0px 0.25vmin 0px white,
+                    0px -0.25vmin 0px white;
+    color : black;
+    transition: color 0.5s, transform 0.5s;
+
+}
+.eventContainer section a:hover span {
+    transform : rotate(-10deg);
+    color : #efc600;
+    transition: all 0.5s;
+}
+
+
+/*
+                      _           _                                 _
+                     | |         | |                               (_)
+  _____   _____ _ __ | |_   _ __ | |__  _ __ ______ _ __ ___   __ _ _ _ __
+ / _ \ \ / / _ \ '_ \| __| | '_ \| '_ \| '_ \______| '_ ` _ \ / _` | | '_ \
+|  __/\ V /  __/ | | | |_ _| |_) | | | | |_) |     | | | | | | (_| | | | | |
+ \___| \_/ \___|_| |_|\__(_) .__/|_| |_| .__/      |_| |_| |_|\__,_|_|_| |_|
+                           | |         | |
+                           |_|         |_|
+*/
+
+#eventImageAndVotes{
+    width: 100%;
+    height : 40%;
+    padding-top : 2vmin;
+    padding-bottom: 2vmin;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#eventImageAndVotes img {
+    width : 40%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid #224a95;
+    border-radius: 40px 0px 40px 0px;
+    box-sizing: border-box;
+}
+
+#eventImageAndVotes > div {
+    width :25%;
+    padding : 2vmin;
+    margin-left: 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 5px solid #224a95;
+    border-radius: 40px 0px 40px 0px;
+    box-sizing: border-box;
+}
+#eventImageAndVotes div h1 {
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Extreme;
+    font-size : 2vh;
+}
+#eventImageAndVotes > div > div{
+    width : 100%;
+    display: flex;
+    align-items: center;
+}
+#progressBar{
+    width : 50%;
+    height : 2vmin;
+    border : 2px solid #224a95;
+    border-radius: 40px;
+    background-color: transparent;
+}
+#progressBar div {
+    height : 100%;
+    background-color : #efc600;
+    border : 2px solid transparent;
+    border-radius: 40px;
+    box-sizing: border-box;
+
+}
+#eventImageAndVotes > div > div > p{
+    font-size: 2vmin;
+    width : 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#eventImageAndVotes > div > p{
+    display: flex;
+    align-items: center;
+    font-size: 2vmin;
+}
+#eventImageAndVotes > div > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#eventImageAndVotes > div > form label{
+    font-size: 2vmin;
+    margin-left: 1vmin;
+    margin-right: 1vmin;
+}
+#eventImageAndVotes > div > form input{
+    width : 20%;
+    padding : 0.5vmin;
+    text-align: center;
+    border : 2px solid black;
+    border-radius: 40px;
+    color : black;
+    background-color: transparent;
+}
+#eventImageAndVotes > div > form button {
+    background-color: transparent;
+    cursor: pointer;
+    width : 100%;
+}
+
+#eventDescriptionAndBonusIdeas {
+    width: 100%;
+    height : 50%;
+    padding-bottom: 2vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#description{
+    width :25%;
+    height: 100%;
+    padding : 2vmin;
+    margin-right: 5%;
+    border : 5px solid #224a95;
+    border-radius: 40px 0px 40px 0px;
+    box-sizing: border-box;
+
+}
+#description p{
+    font-size : clamp(1vmin, 2vmin, 2vmin);
+    height: 100%;
+    overflow: scroll;
+    box-sizing: border-box;
+}
+#bonusIdeas {
+    width : 40%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid #224a95;
+    border-radius: 40px 0px 40px 0px;
+    box-sizing: border-box;
+}
+#bonusIdeas ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+#bonusIdeas ul li {
+    width: 90%;
+    height : 20%;
+    list-style: none;
+    border-bottom: 2px solid #224a95;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
+#bonusIdeas ul li p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    max-height: 100%;
+    font-size : clamp(1vmin, 2vmin, 2vmin);
+}
+
+
+/*
+ _             _               _                                 _
+| |           (_)             | |                               (_)
+| | ___   __ _ _ _ __    _ __ | |__  _ __ ______ _ __ ___   __ _ _ _ __
+| |/ _ \ / _` | | '_ \  | '_ \| '_ \| '_ \______| '_ ` _ \ / _` | | '_ \
+| | (_) | (_| | | | | |_| |_) | | | | |_) |     | | | | | | (_| | | | | |
+|_|\___/ \__, |_|_| |_(_) .__/|_| |_| .__/      |_| |_| |_|\__,_|_|_| |_|
+          __/ |         | |         | |
+         |___/          |_|         |_|
+*/
+
+#loginMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width : 100vw;
+    height: 80vh;
+}
+#loginMain div {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height : fit-content;
+    justify-content: space-evenly;
+    align-items: center;
+    border : 5px solid #224a95;
+    border-radius: 40px 0px 40px 0px;
+    box-sizing: border-box;
+    padding: 2vmin;
+}
+#loginMain h1 {
+    font-size: 2.5em;
+    height : 20%
+}
+#loginMain form:first-of-type {
+    display: flex;
+    height : 50%;
+    margin: 5%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+#loginMain form:first-of-type [type="submit"] {
+    align-self: center;
+    background : transparent;
+}
+#MDP {
+    display: none;
+}
+
+
+/*
+                                                    _                                 _
+                                                   | |                               (_)
+ _   _ ___  ___ _ __ _ __   __ _  __ _  ___   _ __ | |__  _ __ ______ _ __ ___   __ _ _ _ __
+| | | / __|/ _ \ '__| '_ \ / _` |/ _` |/ _ \ | '_ \| '_ \| '_ \______| '_ ` _ \ / _` | | '_ \
+| |_| \__ \  __/ |  | |_) | (_| | (_| |  __/_| |_) | | | | |_) |     | | | | | | (_| | | | | |
+ \__,_|___/\___|_|  | .__/ \__,_|\__, |\___(_) .__/|_| |_| .__/      |_| |_| |_|\__,_|_|_| |_|
+                    | |           __/ |      | |         | |
+                    |_|          |___/       |_|         |_|
+
+*/
+#userInfosMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 80vh;
+
+}
+#userModifiers {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 50%;
+}
+.infosUser {
+    padding : 2vmin;
+    margin : 2vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    border : 5px solid #224a95;
+    border-radius : 40px 0 40px 0;
+    box-sizing: border-box;
+}
+.infosUser p:first-child {
+    font-size: 1.5em;
+}
+.infosUser form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+/*
+cringe
+*/
+#adminMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width : 100vw;
+  height : 80vh;
+}
+
+#adminMain section {
+  padding : 2vmin;
+  margin: 2vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  border: 5px solid #224a95;
+  border-radius: 40px 0 40px 0;
+  box-sizing: border-box;
+}
+#adminMain section h1 {
+  text-decoration: none;
+  font-size: 2em;
+}
+
+/*
+  __            _
+ / _|          | |
+| |_ ___   ___ | |_ ___ _ __
+|  _/ _ \ / _ \| __/ _ \ '__|
+| || (_) | (_) | ||  __/ |
+|_| \___/ \___/ \__\___|_|
+*/
+footer {
+    position : absolute;
+    width : 100%;
+    height : 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color :rgb(77, 77, 77);
+    bottom: 0;
+}
+/*
+Footer elements
+*/
+footer ul {
+    width : 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:  center;
+}
+footer ul li {
+    width : 20%;
+    display : flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+
+}
+footer ul :nth-child(2n+1) a {
+    width : 100%;
+    padding : 0.5vmin;
+    margin : 0.5vmin;
+    display: flex;
+    font-size: 2vmin;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color : black;
+    border: 2px solid black;
+    border-radius: 40px;
+}
+.split {
+    height : 6vh;
+    width : 0px !important;
+    border-left: 4px dotted rgba(147, 147, 147, 0.5);
+}
