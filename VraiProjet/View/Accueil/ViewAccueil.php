@@ -64,10 +64,11 @@
 	<?php
 
 
-  $count = GetEventCount();
+  $Count = GetEventCount();
   $CurrentEvent = GetEventNames();
 
-  CreateEvent($CurrentEvent, $count);
+  CreateEvent($CurrentEvent, $Count);
+
 
    ?>
 
