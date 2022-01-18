@@ -56,6 +56,20 @@ class UserManager
 
     return $verif;
   }
+
+  public function updateIdRole($login,$id){
+    $db = $this->dbConnect();
+    $verif = $db->query("UPDATE users SET id_role = '" . $id . "' where login = '" . $login . "'");
+
+    return $verif;
+  }
+
+  public function selectUserByLogin($login){
+    $db = $this->dbConnect();
+    $user = $db->query("SELECT * FROM users WHERE login = '". $login . "'");
+
+    return $user;
+  }
 }
 
 
