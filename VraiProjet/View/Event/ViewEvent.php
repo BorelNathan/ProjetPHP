@@ -11,6 +11,7 @@
       $UtilisateurCourantIDRole = $_SESSION['CurrentUserIDRole'];
       $UtilisateurCourantNom = $_SESSION['CurrentUserName'];
       $indiceimage = $dbRow['7'];
+      $retour = $_SESSION['RetourEvent'];
 
       ob_start();
 
@@ -63,25 +64,28 @@
                     </h1>
                     <div>
                         <div id="progressBar">
-                            <div style="width: <?php echo $dbRow['1']; ?>%;">
+                            <div style="width: <?php echo ($dbRow['1'])/2; ?>%;">
                             </div>
                         </div>
-                        <p><?php echo $dbRow['1']; ?> / 100 votes obtenus</p>
+                        <p><?php echo $dbRow['1']; ?> / 200 votes obtenus</p>
                     </div>
                     <p>Votez pour ce projet et contribuez à sa concrétisation !</p>
+                    <p> <?php echo $retour; ?> </p>
                     <?php
                       if($UtilisateurCourantIDRole == 0){}
 
                       else{
                         ?>
-                         <form name="voteInterface" action="event.php" method="get" id="voteForm">
+                         <form name="voteInterface" action="event.php" method="post" id="voteForm">
                                          <label for="pointsToGive">Je donne</label>
-                                         <input type="number" max="points restants user" name="pointsToGive"/>
+                                         <input type="number" max="points restants user" min=1 name="pointsToGive"/>
                                          <label for="pointsToGive">points</label>
                                          <button class="roundCornerLink" type="submit" form="voteInterface" value="">Voter</button>
                          </form>
                     <?php
                       }
+
+
                     ?>
                 </div>
             </section>

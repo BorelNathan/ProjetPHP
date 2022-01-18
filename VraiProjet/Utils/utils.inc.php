@@ -370,10 +370,11 @@ function GetEventNames(){
 }
 
 function Donation($NombreDePoint){
-  $query = "UPDATE event SET point = '" . $NombreDePoint . "'";
+  $query = "UPDATE event SET point =  point + '" . $NombreDePoint . "'";
   $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
   mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
   mysqli_query($dbLink, $query);
+
 
 }
 
