@@ -21,7 +21,7 @@
     $user_id = $_SESSION['CurrentUserID'];
     $user_id_role = $_SESSION['CurrentUserIDRole'];
 
-    if (CheckCampagne($date_deb, $date_fin) == false){
+    if (CheckCampagne($date_deb, $date_fin, -1) == false){
         $_SESSION['MsgCampagne'] = 'Il y a déjà une campagne en cours !';
         header('Location: CreateCampagne.php');
     }

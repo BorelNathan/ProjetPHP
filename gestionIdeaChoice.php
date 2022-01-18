@@ -3,7 +3,6 @@
 session_start();
 require 'utils.inc.php';
 $Event = $_SESSION['Event'];
-$_SESSION['IdeaHasChanged'] = false;
 
 $filter = filterUsers(2);
 if ($filter == 1) {
@@ -30,7 +29,6 @@ if ($filter == 1) {
                         echo '<input type="radio" id="' . $AllIdeas[$i][0] . '" name="ideaSelector" value="' . $AllIdeas[$i][0] . '" > 
                               <label for="' . $AllIdeas[$i][0] . '">' . $AllIdeas[$i][1] . ' points requis</label><br/>';
                     }
-                    echo $_SESSION
                 ?>
                 <input type="submit" name="action" value="Valider"/> <br/>
             </form>

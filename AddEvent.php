@@ -9,6 +9,7 @@
     $user_id_role = $_SESSION['CurrentUserIDRole'];
     date_default_timezone_set('UTC');
     $today = date('Y-m-d');
+    $_SESSION['MsgEvent'] = '';
 
     $title = addslashes($title);
     $description = addslashes($description);
@@ -16,7 +17,7 @@
     $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
     mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
 
-    if($currentIdea = IsThereAnEvent() != false) {
+    if($currentIdea = IsThereAnEvent() != false && $user_id != 22) {
         $_SESSION['MsgEvent'] = 'Tu as déjà créé un événement !';
         header('Location: CreateEvent.php');
         exit();

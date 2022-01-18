@@ -6,6 +6,7 @@ $CampDescription = $_POST['campDescription'];
 $CampMinPoints = $_POST['minPointsCamp'];
 $CampDateDeb = $_POST['dateDebCamp'];
 $CampDateFin = $_POST['dateFinCamp'];
+$CampId = $_SESSION['IdCampagneChoisie'];
 $Change = false;
 
 $CampTitle = addslashes($CampTitle);
@@ -52,7 +53,7 @@ if ($CampMinPoints != '') {
 }
 
 if ($CampDateDeb != false && $CampDateFin != false) {
-    if (CheckCampagne($CampDateDeb, $CampDateFin)){
+    if (CheckCampagne($CampDateDeb, $CampDateFin, $CampId) == true){
         $CampDateDeb = date_create_from_format('Y-m-d', $_POST['dateDebCamp']);
         $CampDateDeb = $CampDateDeb->format('Y-m-d');
         $CampDateFin = date_create_from_format('Y-m-d', $_POST['dateFinCamp']);
@@ -70,7 +71,7 @@ if ($CampDateDeb != false && $CampDateFin != false) {
     $_SESSION['CampagneChange'] = $_SESSION['CampagneChange'] . 'Il y a déjà une campagne en cours ! <br/>';
 }
 elseif ($CampDateDeb != false) {
-    if (CheckCampagne($CampDateDeb, $_SESSION['CampagneChoisie'][2]) != false){
+    if (CheckCampagne($CampDateDeb, $_SESSION['CampagneChoisie'][2], $CampId) != false){
         $CampDateDeb = date_create_from_format('Y-m-d', $_POST['dateDebCamp']);
         $CampDateDeb = $CampDateDeb->format('Y-m-d');
         $query = "UPDATE campagne SET date_deb = '" . $CampDateDeb . "' WHERE id_campagne =  '" . $_SESSION['CampagneChoisie'][0]  . "'";
@@ -83,10 +84,12 @@ elseif ($CampDateDeb != false) {
         }
         $Change = true;
     }
-    $_SESSION['CampagneChange'] = $_SESSION['CampagneChange'] . 'Il y a déjà une campagne en cours ! <br/>';
+    else{
+        $_SESSION['CampagneChange'] = $_SESSION['CampagneChange'] . 'Il y a déjà une campagne en cours ! <br/>';
+    }
 }
 elseif ($CampDateFin != false) {
-    if (CheckCampagne($_SESSION['CampagneChoisie'][1], $CampDateFin) != false){
+    if (CheckCampagne($_SESSION['CampagneChoisie'][1], $CampDateFin, $CampId) != false){
         $CampDateFin = date_create_from_format('Y-m-d', $_POST['dateFinCamp']);
         $CampDateFin = $CampDateFin->format('Y-m-d');
         $query = "UPDATE campagne SET date_fin = '" . $CampDateFin . "' WHERE id_campagne =  '" . $_SESSION['CampagneChoisie'][0]  . "'";
@@ -98,8 +101,9 @@ elseif ($CampDateFin != false) {
             exit();
         }
         $Change = true;
+    }else{
+        $_SESSION['CampagneChange'] = $_SESSION['CampagneChange'] . 'Il y a déjà une campagne en cours ! <br/>';
     }
-    $_SESSION['CampagneChange'] = $_SESSION['CampagneChange'] . 'Il y a déjà une campagne en cours ! <br/>';
 }
 if ($Change == true){
     $_SESSION['CampagneChange'] = $_SESSION['CampagneChange'] . 'Votre campagne a été modifiée ! ';
