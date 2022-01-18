@@ -1,38 +1,55 @@
 <?php
       $titre = $_GET['Event'];
       $title = htmlspecialchars($titre);
-
+      session_start();
       $dbLink = mysqli_connect('mysql-e-eventio.alwaysdata.net', 'e-eventio_login', 'php123456$') or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
       mysqli_select_db($dbLink , 'e-eventio_sql') or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
       $query = "SELECT * FROM event WHERE titre = '" . $title . "'";
       $dbResult = mysqli_query($dbLink, $query);
       $dbRow = mysqli_fetch_row($dbResult);
-
-
+      require_once(__DIR__.'/../../Utils/utils.inc.php');
+      $UtilisateurCourantIDRole = $_SESSION['CurrentUserIDRole'];
+      $UtilisateurCourantNom = $_SESSION['CurrentUserName'];
 
       ob_start();
 ?>
 
 	<header>
+
 			<img id="logo" src="../../resources/images/logo.svg" alt="logo de E-Event.IO" />
-			<!--
-			<section class="connection" id="notConnected">
-				<p>Vous n'êtes pas connecté</p>
-				<ul>
-					<li><div class="split"></div></li>
-					<li><a href="login.php">se connecter</a></li>
-					<li><a href= "Inscription.php" />s'inscrire</a></li>
-				</ul>
-			</section> -->
-			<section class="connection" id="connected">
-				<ul>
-					<li><div class="split"></div></li>
-					<li><a class="roundCornerLink" href="userPage.php">Mon espace</a></li>
-					<li><a class="roundCornerLink" href="logout.php" id="logoutli"><img id="logout" src="logout.svg" alt="se déconnecter" /></a></li>
-				</ul>
-			</section>
-		</header>
-		<main>
+      <?php if($UtilisateurCourantIDRole == 0){ ?>
+          <section class="connection" id="notConnected">
+        		<p>Vous n'êtes pas connecté</p>
+      		<form id="login" action="/" method="post">
+                  <input type="hidden" name="action" value="login"/>
+              </form>
+      		<form id="SignIn" action="/" method="post">
+                      <input type="hidden" name="action" value="SignIn"/>
+              </form>
+      		<ul>
+                  <li><a class="roundCornerLink" href='#' onclick='document.getElementById("login").submit()'>Se connecter</a></li>
+                  <li><a class="roundCornerLink" href='#' onclick='document.getElementById("SignIn").submit()'>S'inscrire</a></li>
+        		</ul>
+          </section>
+          <?php }
+          else{ ?>
+          <section class="connection" id="connected">
+              <p> Connecté en tant que : <?php echo $UtilisateurCourantNom; ?></p>
+      		<form id="MySpace" action="/" method="post">
+                      <input type="hidden" name="action" value="UserPage"/>
+      		</form>
+              <form id="Deco" action="/" method="post">
+                  <input type="hidden" name="action" value="Deconnexion"/>
+              </form>
+      		<ul>
+      			<li><a class="roundCornerLink" href='#' onclick='document.getElementById("MySpace").submit()'>Mon espace</a></li>
+                  <li><a href='#' onclick='document.getElementById("Deco").submit()' id="logoutli"><img id="logout" src="../../resources/images/logout.svg" alt="se d�connecter" /></a></li>
+        		</ul>
+      	</section>
+      <?php } ?>
+	</header>
+
+		  <main>
             <section id="eventImageAndVotes">
                 <img src="../../resources/images/thumbnail/ <?php ?> .jpg" alt="image">
                 <div>
@@ -51,18 +68,18 @@
                     </div>
                     <p>Votez pour ce projet et contribuez à sa concrétisation !</p>
                     <?php
-                          require_once(__DIR__.'/../../Utils/utils.inc.php');
-                          $filtre = filterUsers('1');
-                          if($filtre == 1){
+                      if($UtilisateurCourantIDRole == 0){}
 
-                              echo '<form name="voteInterface" action="event.php" method="get" id="voteForm">
-                                        <label for="pointsToGive">Je donne</label>
-                                        <input type="number" max="points restants user" name="pointsToGive"/>
-                                        <label for="pointsToGive">points</label>
-                                        <button class="roundCornerLink" type="submit" form="voteInterface" value="">Voter</button>
-                                    </form>';
-                          }
-
+                      else{
+                        ?>
+                         <form name="voteInterface" action="event.php" method="get" id="voteForm">
+                                         <label for="pointsToGive">Je donne</label>
+                                         <input type="number" max="points restants user" name="pointsToGive"/>
+                                         <label for="pointsToGive">points</label>
+                                         <button class="roundCornerLink" type="submit" form="voteInterface" value="">Voter</button>
+                         </form>
+                    <?php
+                      }
                     ?>
                 </div>
             </section>
